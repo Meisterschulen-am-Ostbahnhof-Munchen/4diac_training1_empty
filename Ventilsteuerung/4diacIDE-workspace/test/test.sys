@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System Name="test" Comment="">
+	<VersionInfo Version="1.0" Author="franz" Date="2023-10-23">
+	</VersionInfo>
+	<Device Name="FORTE_PC" Type="FORTE_PC" Comment="" x="1800.0" y="1800.0">
+		<Parameter Name="MGR_ID" Value="C_00" Comment="Device manager socket ID"/>
+		<Attribute Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+		<Attribute Name="Color" Type="STRING" Value="255,190,111"/>
+		<Resource Name="EMB_RES" Type="EMB_RES" Comment="" x="0.0" y="0.0">
+			<FBNetwork>
+				<SubApp Name="Ventilsteuerung" Type="Ventilsteuerung" Comment="" x="2166.666666666667" y="-133.33333333333334">
+				</SubApp>
+				<EventConnections>
+					<Connection Source="START.COLD" Destination="Ventilsteuerung.COLD" Comment=""/>
+				</EventConnections>
+			</FBNetwork>
+		</Resource>
+	</Device>
+	<Segment Name="Ethernet" Type="Ethernet" Comment="" x="3053.3333333333335" y="1360.0" dx1="2000.0">
+		<Attribute Name="Color" Type="STRING" Value="121,203,38"/>
+	</Segment>
+	<Link SegmentName="Ethernet" CommResource="FORTE_PC" Comment="">
+	</Link>
+</System>
