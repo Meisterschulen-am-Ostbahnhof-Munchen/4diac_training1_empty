@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GlobalConstants Name="Computers" Comment="Computers IP Addresses">
+<GlobalConstants Name="Computers" Comment="Global constants">
 	<Identification Standard="61499-1">
 	</Identification>
 	<VersionInfo Version="1.0" Author="franz" Date="2023-10-22">
@@ -8,54 +8,53 @@
 	</CompilerInfo>
 	<GlobalConstants>
 		<VarDeclaration Name="C_LO" Type="WSTRING" Comment="" InitialValue="&quot;localhost:61499&quot;"/>
-		<VarDeclaration Name="C_ET" Type="WSTRING" Comment="using the IP over USB Virtual Ethernet" InitialValue="&quot;192.168.5.1:61499&quot;"/>
-		<VarDeclaration Name="C_ST" Type="WSTRING" Comment="Using the WIFI Station" InitialValue="&quot;192.168.4.1:61499&quot;"/>
-		<VarDeclaration Name="C_00" Type="WSTRING" Comment="Using the WIFI Station" InitialValue="&quot;192.168.4.1:61499&quot;"/>
-		<VarDeclaration Name="C_01" Type="WSTRING" Comment="Student 1" InitialValue="&quot;192.168.188.1:61499&quot;"/>
-		<VarDeclaration Name="C_02" Type="WSTRING" Comment="Student 2" InitialValue="&quot;192.168.188.2:61499&quot;"/>
-		<VarDeclaration Name="C_03" Type="WSTRING" Comment="Student 3" InitialValue="&quot;192.168.188.3:61499&quot;"/>
-		<VarDeclaration Name="C_04" Type="WSTRING" Comment="Student 4" InitialValue="&quot;192.168.188.4:61499&quot;"/>
-		<VarDeclaration Name="C_05" Type="WSTRING" Comment="Student 5" InitialValue="&quot;192.168.188.5:61499&quot;"/>
-		<VarDeclaration Name="C_06" Type="WSTRING" Comment="Student 6" InitialValue="&quot;192.168.188.6:61499&quot;"/>
-		<VarDeclaration Name="C_07" Type="WSTRING" Comment="Student 7" InitialValue="&quot;192.168.188.7:61499&quot;"/>
-		<VarDeclaration Name="C_08" Type="WSTRING" Comment="Student 8" InitialValue="&quot;192.168.188.8:61499&quot;"/>
-		<VarDeclaration Name="C_09" Type="WSTRING" Comment="Student 9" InitialValue="&quot;192.168.188.9:61499&quot;"/>
-		<VarDeclaration Name="C_10" Type="WSTRING" Comment="Student 10" InitialValue="&quot;192.168.188.10:61499&quot;"/>
-		<VarDeclaration Name="C_11" Type="WSTRING" Comment="Student 11" InitialValue="&quot;192.168.188.11:61499&quot;"/>
-		<VarDeclaration Name="C_12" Type="WSTRING" Comment="Student 12" InitialValue="&quot;192.168.188.12:61499&quot;"/>
-		<VarDeclaration Name="C_13" Type="WSTRING" Comment="Student 13" InitialValue="&quot;192.168.188.13:61499&quot;"/>
-		<VarDeclaration Name="C_14" Type="WSTRING" Comment="Student 14" InitialValue="&quot;192.168.188.14:61499&quot;"/>
-		<VarDeclaration Name="C_15" Type="WSTRING" Comment="Student 15" InitialValue="&quot;192.168.188.15:61499&quot;"/>
-		<VarDeclaration Name="C_16" Type="WSTRING" Comment="Student 16" InitialValue="&quot;192.168.188.16:61499&quot;"/>
-		<VarDeclaration Name="C_17" Type="WSTRING" Comment="Student 17" InitialValue="&quot;192.168.188.17:61499&quot;"/>
-		<VarDeclaration Name="C_18" Type="WSTRING" Comment="Student 18" InitialValue="&quot;192.168.188.18:61499&quot;"/>
-		<VarDeclaration Name="C_19" Type="WSTRING" Comment="Student 19" InitialValue="&quot;192.168.188.19:61499&quot;"/>
+		<VarDeclaration Name="C_ET" Type="WSTRING" Comment="" InitialValue="&quot;192.168.5.1:61499&quot;"/>
+		<VarDeclaration Name="C_ST" Type="WSTRING" Comment="" InitialValue="&quot;192.168.4.1:61499&quot;"/>
+		<VarDeclaration Name="C_00" Type="WSTRING" Comment="" InitialValue="&quot;192.168.4.1:61499&quot;"/>
+		<VarDeclaration Name="C_01" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.1:61499&quot;"/>
+		<VarDeclaration Name="C_02" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.2:61499&quot;"/>
+		<VarDeclaration Name="C_03" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.3:61499&quot;"/>
+		<VarDeclaration Name="C_04" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.4:61499&quot;"/>
+		<VarDeclaration Name="C_05" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.5:61499&quot;"/>
+		<VarDeclaration Name="C_06" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.6:61499&quot;"/>
+		<VarDeclaration Name="C_07" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.7:61499&quot;"/>
+		<VarDeclaration Name="C_08" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.8:61499&quot;"/>
+		<VarDeclaration Name="C_09" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.9:61499&quot;"/>
+		<VarDeclaration Name="C_10" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.10:61499&quot;"/>
+		<VarDeclaration Name="C_11" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.11:61499&quot;"/>
+		<VarDeclaration Name="C_12" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.12:61499&quot;"/>
+		<VarDeclaration Name="C_13" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.13:61499&quot;"/>
+		<VarDeclaration Name="C_14" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.14:61499&quot;"/>
+		<VarDeclaration Name="C_15" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.15:61499&quot;"/>
+		<VarDeclaration Name="C_16" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.16:61499&quot;"/>
+		<VarDeclaration Name="C_17" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.17:61499&quot;"/>
+		<VarDeclaration Name="C_18" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.18:61499&quot;"/>
+		<VarDeclaration Name="C_19" Type="WSTRING" Comment="" InitialValue="&quot;192.168.188.19:61499&quot;"/>
 	</GlobalConstants>
-	<OriginalSource><![CDATA[/* Computers IP Addresses */
-VAR_GLOBAL CONSTANT
+	<OriginalSource><![CDATA[VAR_GLOBAL CONSTANT
 	C_LO : WSTRING := "localhost:61499";
-	C_ET : WSTRING := "192.168.5.1:61499";    // using the IP over USB Virtual Ethernet
-	C_ST : WSTRING := "192.168.4.1:61499";    // Using the WIFI Station
-	C_00 : WSTRING := "192.168.4.1:61499";    // Using the WIFI Station
-	C_01 : WSTRING := "192.168.188.1:61499";    // Student 1
-	C_02 : WSTRING := "192.168.188.2:61499";    // Student 2
-	C_03 : WSTRING := "192.168.188.3:61499";    // Student 3
-	C_04 : WSTRING := "192.168.188.4:61499";    // Student 4
-	C_05 : WSTRING := "192.168.188.5:61499";    // Student 5
-	C_06 : WSTRING := "192.168.188.6:61499";    // Student 6
-	C_07 : WSTRING := "192.168.188.7:61499";    // Student 7
-	C_08 : WSTRING := "192.168.188.8:61499";    // Student 8
-	C_09 : WSTRING := "192.168.188.9:61499";    // Student 9
-	C_10 : WSTRING := "192.168.188.10:61499";    // Student 10
-	C_11 : WSTRING := "192.168.188.11:61499";    // Student 11
-	C_12 : WSTRING := "192.168.188.12:61499";    // Student 12
-	C_13 : WSTRING := "192.168.188.13:61499";    // Student 13
-	C_14 : WSTRING := "192.168.188.14:61499";    // Student 14
-	C_15 : WSTRING := "192.168.188.15:61499";    // Student 15
-	C_16 : WSTRING := "192.168.188.16:61499";    // Student 16
-	C_17 : WSTRING := "192.168.188.17:61499";    // Student 17
-	C_18 : WSTRING := "192.168.188.18:61499";    // Student 18
-	C_19 : WSTRING := "192.168.188.19:61499";    // Student 19
+	C_ET : WSTRING := "192.168.5.1:61499";
+	C_ST : WSTRING := "192.168.4.1:61499";
+	C_00 : WSTRING := "192.168.4.1:61499";
+	C_01 : WSTRING := "192.168.188.1:61499";
+	C_02 : WSTRING := "192.168.188.2:61499";
+	C_03 : WSTRING := "192.168.188.3:61499";
+	C_04 : WSTRING := "192.168.188.4:61499";
+	C_05 : WSTRING := "192.168.188.5:61499";
+	C_06 : WSTRING := "192.168.188.6:61499";
+	C_07 : WSTRING := "192.168.188.7:61499";
+	C_08 : WSTRING := "192.168.188.8:61499";
+	C_09 : WSTRING := "192.168.188.9:61499";
+	C_10 : WSTRING := "192.168.188.10:61499";
+	C_11 : WSTRING := "192.168.188.11:61499";
+	C_12 : WSTRING := "192.168.188.12:61499";
+	C_13 : WSTRING := "192.168.188.13:61499";
+	C_14 : WSTRING := "192.168.188.14:61499";
+	C_15 : WSTRING := "192.168.188.15:61499";
+	C_16 : WSTRING := "192.168.188.16:61499";
+	C_17 : WSTRING := "192.168.188.17:61499";
+	C_18 : WSTRING := "192.168.188.18:61499";
+	C_19 : WSTRING := "192.168.188.19:61499";
 END_VAR
 
 ]]></OriginalSource>
