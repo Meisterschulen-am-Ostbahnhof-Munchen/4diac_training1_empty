@@ -1,71 +1,64 @@
-// ISO-Designer ISO 11783   Version 5.6.2.5533 Jetter AG
+// ISO-Designer ISO 11783   Version 5.7.2.6664 Bucher Automation AG
 // Do not change!
 
-#define WorkingSet_0_Offset                                     1
+#define WorkingSet_Offset                                       1
 #define Macro_Go_To_DataMask_M1_Offset                         21
 #define Macro_Go_To_DataMask_M2_Offset                         34
-#define DataMask_M1_Offset                                     47
-#define DataMask_M2_Offset                                    157
-#define Container_B_Offset                                    177
-#define SoftKeyMask_S1_Offset                                 199
-#define SoftKey_F1_Offset                                     229
-#define SoftKey_F2_Offset                                     242
-#define SoftKey_F3_Offset                                     255
-#define SoftKey_F4_Offset                                     268
-#define SoftKey_F5_Offset                                     281
-#define SoftKey_F6_Offset                                     294
-#define SoftKey_F7_Offset                                     307
-#define SoftKey_F8_Offset                                     320
-#define SoftKey_F9_Offset                                     333
-#define SoftKey_F10_Offset                                    346
-#define SoftKey_F11_Offset                                    359
-#define SoftKey_F12_Offset                                    372
-#define Button_A1_Offset                                      385
-#define Button_A2_Offset                                      412
-#define InputNumber_I1_Offset                                 439
-#define InputNumber_I2_Offset                                 477
-#define OutputString_WorkingSet_0_Offset                      515
-#define OutputString_SoftKey_F1_Offset                        544
-#define OutputString_SoftKey_F2_Offset                        571
-#define OutputString_SoftKey_F3_Offset                        598
-#define OutputString_SoftKey_F4_Offset                        625
-#define OutputString_SoftKey_F5_Offset                        652
-#define OutputString_SoftKey_F6_Offset                        679
-#define OutputString_SoftKey_F7_Offset                        706
-#define OutputString_SoftKey_F8_Offset                        733
-#define OutputString_SoftKey_F9_Offset                        760
-#define OutputString_SoftKey_F10_Offset                       787
-#define OutputString_SoftKey_F11_Offset                       815
-#define OutputString_SoftKey_F12_Offset                       843
-#define OutputString_DataMask_M1_Offset                       871
-#define OutputString_DataMask_M2_Offset                       899
-#define OutputString_Go_To_DataMask_M1_Offset                 927
-#define OutputString_Go_To_DataMask_M2_Offset                 961
-#define OutputString_Button_A1_Offset                         995
-#define OutputString_Button_A2_Offset                        1021
-#define OutputString_OutputNumber_N1_Offset                  1047
-#define OutputString_OutputNumber_N2_Offset                  1079
-#define OutputString_InputNumber_I1_Offset                   1111
-#define OutputString_InputNumber_I2_Offset                   1142
-#define OutputNumber_N1_Offset                               1173
-#define OutputNumber_N2_Offset                               1202
-#define Line_W_Offset                                        1231
-#define Line_S_Offset                                        1242
-#define Logos_icon_Offset                                    1253
-#define FontAttributes_6x8_Offset                            1782
-#define FontAttributes_8x12_Offset                           1790
-#define FontAttributes_12x16_Offset                          1798
-#define FontAttributes_23003_Offset                          1806
-#define LineAttributes_black_Offset                          1814
-#define ObjectPointer_P1_Offset                              1822
-#define AuxFunction2_X1_Offset                               1827
+#define Macro_Go_To_DataMask_M3_Offset                         47
+#define DataMask_M1_Offset                                     60
+#define Container_B_Offset                                     74
+#define Container_low_Offset                                   96
+#define Container_medium_Offset                               124
+#define Container_high_Offset                                 152
+#define SoftKeyMask_S1_Offset                                 180
+#define SoftKey_F1_Offset                                     188
+#define Button_A1_Offset                                      201
+#define Button_A2_Offset                                      228
+#define Button_A3_Offset                                      255
+#define InputNumber_I3_Offset                                 282
+#define InputNumber_I4_Offset                                 320
+#define OutputString_WorkingSet_0_Offset                      358
+#define OutputString_SoftKey_F1_Offset                        387
+#define OutputString_DataMask_M1_Offset                       414
+#define OutputString_DataMask_M2_Offset                       442
+#define OutputString_Go_To_DataMask_M1_Offset                 470
+#define OutputString_Go_To_DataMask_M2_Offset                 504
+#define OutputString_Button_A1_Offset                         538
+#define OutputString_Button_A2_Offset                         564
+#define OutputString_Go_To_DataMask_M3_Offset                 590
+#define OutputString_Button_A3_Offset                         624
+#define OutputString_InputNumber_I3_Offset                    650
+#define OutputString_InputNumber_I4_Offset                    681
+#define OutputString_OutputNumber_N3_Offset                   712
+#define OutputNumber_N3_Offset                                744
+#define Line_W_Offset                                         773
+#define Line_S_Offset                                         784
+#define Rectangle_black_Offset                                795
+#define Rectangle_grey_Offset                                 808
+#define Rectangle_yellow_Offset                               821
+#define Rectangle_red_Offset                                  834
+#define information_Offset                                    847
+#define alert_Offset                                         5764
+#define Caution_Offset                                      10681
+#define Meisterschulen_LogoG1_256_Offset                    15598
+#define Logos_icon_Offset                                   21241
+#define FontAttributes_6x8_Offset                           21770
+#define FontAttributes_8x12_Offset                          21778
+#define FontAttributes_12x16_Offset                         21786
+#define LineAttributes_black_Offset                         21794
+#define LineAttributes_black_3_Offset                       21802
+#define LineAttributes_grey_3_Offset                        21810
+#define LineAttributes_yellow_3_Offset                      21818
+#define LineAttributes_red_3_Offset                         21826
+#define FillAttributes_white_Offset                         21834
+#define AuxFunction2_X1_Offset                              21842
 
 #define ISO_OP_MEMORY_CLASS
 
-#define ISO_OP_DefaultPool_Size   1839
+#define ISO_OP_DefaultPool_Size  21854
 extern const unsigned char ISO_OP_MEMORY_CLASS isoOP_DefaultPool[];
 
-#define ISO_OP_DefaultPool_ObjectNumber     58
+#define ISO_OP_DefaultPool_ObjectNumber     51
 extern const unsigned long ISO_OP_MEMORY_CLASS isoOP_DefaultPool_Offset[];
 extern const unsigned long ISO_OP_MEMORY_CLASS isoOP_DefaultPool_Offset_Id[];
 #define ISO_OP_DefaultPool_Scale_Offset      1
