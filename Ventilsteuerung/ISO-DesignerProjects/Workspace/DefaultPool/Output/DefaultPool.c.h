@@ -2,63 +2,22 @@
 // Do not change!
 
 #define WorkingSet_Offset                                       1
-#define Macro_Go_To_DataMask_M1_Offset                         21
-#define Macro_Go_To_DataMask_M2_Offset                         34
-#define Macro_Go_To_DataMask_M3_Offset                         47
-#define DataMask_M1_Offset                                     60
-#define Container_B_Offset                                     74
-#define Container_low_Offset                                   96
-#define Container_medium_Offset                               124
-#define Container_high_Offset                                 152
-#define SoftKeyMask_S1_Offset                                 180
-#define SoftKey_F1_Offset                                     188
-#define Button_A1_Offset                                      201
-#define Button_A2_Offset                                      228
-#define Button_A3_Offset                                      255
-#define InputNumber_I3_Offset                                 282
-#define InputNumber_I4_Offset                                 320
-#define OutputString_WorkingSet_0_Offset                      358
-#define OutputString_SoftKey_F1_Offset                        387
-#define OutputString_DataMask_M1_Offset                       414
-#define OutputString_DataMask_M2_Offset                       442
-#define OutputString_Go_To_DataMask_M1_Offset                 470
-#define OutputString_Go_To_DataMask_M2_Offset                 504
-#define OutputString_Button_A1_Offset                         538
-#define OutputString_Button_A2_Offset                         564
-#define OutputString_Go_To_DataMask_M3_Offset                 590
-#define OutputString_Button_A3_Offset                         624
-#define OutputString_InputNumber_I3_Offset                    650
-#define OutputString_InputNumber_I4_Offset                    681
-#define OutputString_OutputNumber_N3_Offset                   712
-#define OutputNumber_N3_Offset                                744
-#define Line_W_Offset                                         773
-#define Line_S_Offset                                         784
-#define Rectangle_black_Offset                                795
-#define Rectangle_grey_Offset                                 808
-#define Rectangle_yellow_Offset                               821
-#define Rectangle_red_Offset                                  834
-#define information_Offset                                    847
-#define alert_Offset                                         5764
-#define Caution_Offset                                      10681
-#define Meisterschulen_LogoG1_256_Offset                    15598
-#define Logos_icon_Offset                                   21241
-#define FontAttributes_6x8_Offset                           21770
-#define FontAttributes_8x12_Offset                          21778
-#define FontAttributes_12x16_Offset                         21786
-#define LineAttributes_black_Offset                         21794
-#define LineAttributes_black_3_Offset                       21802
-#define LineAttributes_grey_3_Offset                        21810
-#define LineAttributes_yellow_3_Offset                      21818
-#define LineAttributes_red_3_Offset                         21826
-#define FillAttributes_white_Offset                         21834
-#define AuxFunction2_X1_Offset                              21842
+#define DataMask_M1_Offset                                     21
+#define SoftKeyMask_S1_Offset                                  35
+#define SoftKey_F1_Offset                                      43
+#define OutputString_WorkingSet_0_Offset                       56
+#define OutputString_SoftKey_F1_Offset                         85
+#define OutputString_DataMask_M1_Offset                       112
+#define Logos_icon_Offset                                     140
+#define FontAttributes_6x8_Offset                             669
+#define AuxFunction2_X1_Offset                                677
 
 #define ISO_OP_MEMORY_CLASS
 
-#define ISO_OP_DefaultPool_Size  21854
+#define ISO_OP_DefaultPool_Size    689
 extern const unsigned char ISO_OP_MEMORY_CLASS isoOP_DefaultPool[];
 
-#define ISO_OP_DefaultPool_ObjectNumber     51
+#define ISO_OP_DefaultPool_ObjectNumber     10
 extern const unsigned long ISO_OP_MEMORY_CLASS isoOP_DefaultPool_Offset[];
 extern const unsigned long ISO_OP_MEMORY_CLASS isoOP_DefaultPool_Offset_Id[];
 #define ISO_OP_DefaultPool_Scale_Offset      1
