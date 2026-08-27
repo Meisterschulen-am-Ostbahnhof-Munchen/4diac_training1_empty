@@ -58,6 +58,7 @@
 			<Connection Source="WBSD_Selected.GETO" Destination="F_MOVE.REQ" dx1="306.67"/>
 			<Connection Source="F_MOVE.CNF" Destination="Updated" dx1="286.67"/>
 			<Connection Source="I_WBSD.IND" Destination="IND" dx1="400"/>
+			<Connection Source="F_MOVE.CNF" Destination="I_WBSD.INIT"/>
 		</EventConnections>
 		<DataConnections>
 			<Connection Source="E_T_FF_SR.Q" Destination="WBSD_Selected.VALUE" dx1="740"/>

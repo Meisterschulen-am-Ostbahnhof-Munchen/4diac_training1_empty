@@ -55,6 +55,7 @@
 			<Connection Source="NMEA_Selected.GETO" Destination="F_MOVE.REQ" dx1="253.33"/>
 			<Connection Source="F_MOVE.CNF" Destination="Updated" dx1="553.33"/>
 			<Connection Source="COGSOGRapidUpdate.IND" Destination="IND" dx1="180"/>
+			<Connection Source="F_MOVE.CNF" Destination="COGSOGRapidUpdate.INIT"/>
 		</EventConnections>
 		<DataConnections>
 			<Connection Source="E_T_FF_SR.Q" Destination="NMEA_Selected.VALUE" dx1="593.33"/>
