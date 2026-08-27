@@ -83,19 +83,19 @@ const unsigned long ISO_OP_MEMORY_CLASS isoOP_DefaultPool_Offset_Id[] = {
 	  2261,  // OutputNumber_12006_Offset
 	  2290,  // OutputNumber_12007_Offset
 	  2319,  // Maschine_small_Offset
-	  6048,  // logo_grafinger_small_Offset
-	 14389,  // headlight_small_Offset
-	 16074,  // Zurueck_small_Offset
-	 16539,  // Einstellungen_small_Offset
-	 17068,  // pause_s_Offset
-	 18811,  // Manueller_Modus_small_Offset
-	 19340,  // gps_wheel_speed_small_Offset
-	 20637,  // Start_small_Offset
-	 21166,  // NumberVariable_Baumzaehler_Offset
-	 21173,  // NumberVariable_Einsatzdauer_Minuten_Offset
-	 21180,  // NumberVariable_Einsatzdauer_Stunden_Offset
-	 21187,  // FontAttributes_6x8_Offset
-	 21195,  // FontAttributes_12x16_Offset
-	 21203,  // FontAttributes_16x24_Offset
-	 21211,  // ObjectPointer_NULL_Offset
+	  5498,  // logo_grafinger_small_Offset
+	 13839,  // headlight_small_Offset
+	 15524,  // Zurueck_small_Offset
+	 15989,  // Einstellungen_small_Offset
+	 16518,  // pause_s_Offset
+	 18261,  // Manueller_Modus_small_Offset
+	 18790,  // gps_wheel_speed_small_Offset
+	 20087,  // Start_small_Offset
+	 20616,  // NumberVariable_Baumzaehler_Offset
+	 20623,  // NumberVariable_Einsatzdauer_Minuten_Offset
+	 20630,  // NumberVariable_Einsatzdauer_Stunden_Offset
+	 20637,  // FontAttributes_6x8_Offset
+	 20645,  // FontAttributes_12x16_Offset
+	 20653,  // FontAttributes_16x24_Offset
+	 20661,  // ObjectPointer_NULL_Offset
 };  // isoOP_DefaultPool_Offset_Id

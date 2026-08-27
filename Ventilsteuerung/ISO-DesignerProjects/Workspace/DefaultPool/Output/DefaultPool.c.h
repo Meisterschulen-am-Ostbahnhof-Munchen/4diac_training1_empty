@@ -80,25 +80,25 @@
 #define OutputNumber_12006_Offset                            2261
 #define OutputNumber_12007_Offset                            2290
 #define Maschine_small_Offset                                2319
-#define logo_grafinger_small_Offset                          6048
-#define headlight_small_Offset                              14389
-#define Zurueck_small_Offset                                16074
-#define Einstellungen_small_Offset                          16539
-#define pause_s_Offset                                      17068
-#define Manueller_Modus_small_Offset                        18811
-#define gps_wheel_speed_small_Offset                        19340
-#define Start_small_Offset                                  20637
-#define NumberVariable_Baumzaehler_Offset                   21166
-#define NumberVariable_Einsatzdauer_Minuten_Offset          21173
-#define NumberVariable_Einsatzdauer_Stunden_Offset          21180
-#define FontAttributes_6x8_Offset                           21187
-#define FontAttributes_12x16_Offset                         21195
-#define FontAttributes_16x24_Offset                         21203
-#define ObjectPointer_NULL_Offset                           21211
+#define logo_grafinger_small_Offset                          5498
+#define headlight_small_Offset                              13839
+#define Zurueck_small_Offset                                15524
+#define Einstellungen_small_Offset                          15989
+#define pause_s_Offset                                      16518
+#define Manueller_Modus_small_Offset                        18261
+#define gps_wheel_speed_small_Offset                        18790
+#define Start_small_Offset                                  20087
+#define NumberVariable_Baumzaehler_Offset                   20616
+#define NumberVariable_Einsatzdauer_Minuten_Offset          20623
+#define NumberVariable_Einsatzdauer_Stunden_Offset          20630
+#define FontAttributes_6x8_Offset                           20637
+#define FontAttributes_12x16_Offset                         20645
+#define FontAttributes_16x24_Offset                         20653
+#define ObjectPointer_NULL_Offset                           20661
 
 #define ISO_OP_MEMORY_CLASS
 
-#define ISO_OP_DefaultPool_Size  21216
+#define ISO_OP_DefaultPool_Size  20666
 extern const unsigned char ISO_OP_MEMORY_CLASS isoOP_DefaultPool[];
 
 #define ISO_OP_DefaultPool_ObjectNumber     94
