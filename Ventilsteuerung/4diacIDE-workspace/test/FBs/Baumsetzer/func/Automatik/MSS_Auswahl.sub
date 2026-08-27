@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="MSS_Auswahl" Comment="Waehlt per Button die vom Traktor gemeldete Machine Selected Speed (MSS) als Quelle aus, merkt sich die Auswahl persistent im NVS, setzt bei Auswahl die anderen Quellen zurueck und liefert die MSS-Sensordaten nach aussen">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Franz" Date="2026-08-27">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::Baumsetzer::func::Automatik">
+		<Import declaration="NVS_Keys::Key_MSS_Store"/>
+		<Import declaration="isobus::UT::io::Button::ButtonActivationCode::BT_RELEASED_UNLATCHED"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_MSS"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="Reset" Type="Event" Comment="Anforderung von einer der anderen Quellen: eigene Auswahl zuruecksetzen">
+			</SubAppEvent>
+		</SubAppEventInputs>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="Chosen" Type="Event" Comment="Button_MSS wurde gedrueckt: eigene Auswahl setzen und alle anderen Quellen zuruecksetzen">
+			</SubAppEvent>
+			<SubAppEvent Name="Updated" Type="Event" Comment="Ausgewaehlt-Status verfuegbar bzw. geaendert (Init-Lesen oder Aenderung); Trigger fuer nachgelagerte Verarbeitung (u.a. Hintergrundfarbe)">
+			</SubAppEvent>
+			<SubAppEvent Name="IND" Type="Event" Comment="Neue MSS-Daten empfangen (Indication von I_MSS)">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="Selected" Type="BOOL" Comment="TRUE wenn MSS aktuell als Geschwindigkeitsquelle ausgewaehlt ist"/>
+			<VarDeclaration Name="SELECTEDMACHINESPEED" Type="UINT" Comment="Vom Traktor gemeldete Machine Selected Speed (PGN 61474, SPN 4305)"/>
+			<VarDeclaration Name="SELECTEDMACHINEDIRECTION" Type="BYTE" Comment="Fahrtrichtung der Machine Selected Speed (PGN 61474, SPN 4309)"/>
+			<VarDeclaration Name="timestamp_data" Type="DINT" Comment="Zeitstempel der letzten MSS-Botschaft"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="Button_MSS" Type="isobus::UT::io::Button::Button_IE" x="100" y="4600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_MSS"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="E_T_FF_SR" Type="iec61499::events::E_T_FF_SR" x="2600" y="4600">
+		</FB>
+		<FB Name="MSS_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="5000" y="4500">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_MSS_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#FALSE"/>
+		</FB>
+		<FB Name="F_MOVE" Type="iec61131::selection::F_MOVE" x="7300" y="4600">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="I_MSS" Type="isobus::tecu::I_MSS" x="9700" y="4600">
+			<Parameter Name="QI" Value="FALSE"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="Button_MSS.IND" Destination="E_T_FF_SR.S" dx1="646.67"/>
+			<Connection Source="Button_MSS.IND" Destination="Chosen" dx1="646.67"/>
+			<Connection Source="Reset" Destination="E_T_FF_SR.R" dx1="233.33"/>
+			<Connection Source="E_T_FF_SR.EO" Destination="MSS_Selected.SET" dx1="740"/>
+			<Connection Source="MSS_Selected.SETO" Destination="F_MOVE.REQ" dx1="253.33"/>
+			<Connection Source="MSS_Selected.GETO" Destination="F_MOVE.REQ" dx1="253.33"/>
+			<Connection Source="F_MOVE.CNF" Destination="Updated" dx1="553.33"/>
+			<Connection Source="I_MSS.IND" Destination="IND" dx1="766.67"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="E_T_FF_SR.Q" Destination="MSS_Selected.VALUE" dx1="740"/>
+			<Connection Source="MSS_Selected.VALUEO" Destination="F_MOVE.IN" dx1="253.33"/>
+			<Connection Source="F_MOVE.OUT" Destination="I_MSS.QI" dx1="606.67"/>
+			<Connection Source="F_MOVE.OUT" Destination="Selected" dx1="606.67"/>
+			<Connection Source="I_MSS.SELECTEDMACHINESPEED" Destination="SELECTEDMACHINESPEED" dx1="2266.67"/>
+			<Connection Source="I_MSS.SELECTEDMACHINEDIRECTION" Destination="SELECTEDMACHINEDIRECTION" dx1="2346.67"/>
+			<Connection Source="I_MSS.timestamp_data" Destination="timestamp_data" dx1="866.67"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="VDS_Auswahl" Comment="Waehlt per Button die satellitengestuetzte Geschwindigkeit (VDS) als Quelle aus, merkt sich die Auswahl persistent im NVS, setzt bei Auswahl die anderen Quellen zurueck und liefert die VDS-Sensordaten nach aussen">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Franz" Date="2026-08-27">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::Baumsetzer::func::Automatik">
+		<Import declaration="NVS_Keys::Key_VDS_Store"/>
+		<Import declaration="isobus::UT::io::Button::ButtonActivationCode::BT_RELEASED_UNLATCHED"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_VDS"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="Reset" Type="Event" Comment="Anforderung von einer der anderen Quellen: eigene Auswahl zuruecksetzen">
+			</SubAppEvent>
+		</SubAppEventInputs>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="Chosen" Type="Event" Comment="Button_VDS wurde gedrueckt: eigene Auswahl setzen und alle anderen Quellen zuruecksetzen">
+			</SubAppEvent>
+			<SubAppEvent Name="Updated" Type="Event" Comment="Ausgewaehlt-Status verfuegbar bzw. geaendert (Init-Lesen oder Aenderung); Trigger fuer nachgelagerte Verarbeitung (u.a. Hintergrundfarbe)">
+			</SubAppEvent>
+			<SubAppEvent Name="IND" Type="Event" Comment="Neue VDS-Daten empfangen (Indication von I_VDS)">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="Selected" Type="BOOL" Comment="TRUE wenn VDS aktuell als Geschwindigkeitsquelle ausgewaehlt ist"/>
+			<VarDeclaration Name="NavigationBasedVehicleSpeed" Type="UINT" Comment="Satellitengestuetzte Fahrzeuggeschwindigkeit (PGN 65256, SPN 517)"/>
+			<VarDeclaration Name="timestamp_data" Type="DINT" Comment="Zeitstempel der letzten VDS-Botschaft"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="Button_VDS" Type="isobus::UT::io::Button::Button_IE" x="100" y="100">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_VDS"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="E_T_FF_SR" Type="iec61499::events::E_T_FF_SR" x="2600" y="100">
+		</FB>
+		<FB Name="VDS_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="5000" y="0">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_VDS_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#FALSE"/>
+		</FB>
+		<FB Name="F_MOVE" Type="iec61131::selection::F_MOVE" x="7300" y="100">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="I_VDS" Type="isobus::tecu::I_VDS" x="9700" y="100">
+			<Parameter Name="QI" Value="FALSE"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="Button_VDS.IND" Destination="E_T_FF_SR.S" dx1="646.67"/>
+			<Connection Source="Button_VDS.IND" Destination="Chosen" dx1="646.67"/>
+			<Connection Source="Reset" Destination="E_T_FF_SR.R" dx1="6240"/>
+			<Connection Source="E_T_FF_SR.EO" Destination="VDS_Selected.SET" dx1="740"/>
+			<Connection Source="VDS_Selected.SETO" Destination="F_MOVE.REQ" dx1="360"/>
+			<Connection Source="VDS_Selected.GETO" Destination="F_MOVE.REQ" dx1="360"/>
+			<Connection Source="F_MOVE.CNF" Destination="I_VDS.INIT" dx1="560"/>
+			<Connection Source="F_MOVE.CNF" Destination="Updated" dx1="560"/>
+			<Connection Source="I_VDS.IND" Destination="IND" dx1="200"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="E_T_FF_SR.Q" Destination="VDS_Selected.VALUE" dx1="740"/>
+			<Connection Source="VDS_Selected.VALUEO" Destination="F_MOVE.IN" dx1="360"/>
+			<Connection Source="F_MOVE.OUT" Destination="I_VDS.QI" dx1="560"/>
+			<Connection Source="F_MOVE.OUT" Destination="Selected" dx1="560"/>
+			<Connection Source="I_VDS.NavigationBasedVehicleSpeed" Destination="NavigationBasedVehicleSpeed" dx1="220"/>
+			<Connection Source="I_VDS.timestamp_data" Destination="timestamp_data" dx1="353.33"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

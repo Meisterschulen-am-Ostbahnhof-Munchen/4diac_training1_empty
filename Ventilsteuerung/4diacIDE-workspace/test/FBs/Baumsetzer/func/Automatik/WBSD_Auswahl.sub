@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="WBSD_Auswahl" Comment="Waehlt per Button die radbasierte Geschwindigkeit/Distanz (WBSD) als Quelle aus, merkt sich die Auswahl persistent im NVS, setzt bei Auswahl die anderen Quellen zurueck und liefert die WBSD-Sensordaten nach aussen">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Franz" Date="2026-08-27">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::Baumsetzer::func::Automatik">
+		<Import declaration="NVS_Keys::Key_WBSD_Store"/>
+		<Import declaration="isobus::UT::io::Button::ButtonActivationCode::BT_RELEASED_UNLATCHED"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_WBSD"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="Reset" Type="Event" Comment="Anforderung von einer der anderen Quellen: eigene Auswahl zuruecksetzen">
+			</SubAppEvent>
+		</SubAppEventInputs>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="Chosen" Type="Event" Comment="Button_WBSD wurde gedrueckt: eigene Auswahl setzen und alle anderen Quellen zuruecksetzen">
+			</SubAppEvent>
+			<SubAppEvent Name="Updated" Type="Event" Comment="Ausgewaehlt-Status verfuegbar bzw. geaendert (Init-Lesen oder Aenderung); Trigger fuer nachgelagerte Verarbeitung (u.a. Hintergrundfarbe)">
+			</SubAppEvent>
+			<SubAppEvent Name="IND" Type="Event" Comment="Neue WBSD-Daten empfangen (Indication von I_WBSD)">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="Selected" Type="BOOL" Comment="TRUE wenn WBSD aktuell als Geschwindigkeitsquelle ausgewaehlt ist"/>
+			<VarDeclaration Name="WHEELBASEDMACHINESPEED" Type="UINT" Comment="Radbasierte Maschinengeschwindigkeit (PGN 65096, SPN 1862)"/>
+			<VarDeclaration Name="WHEELBASEDMACHINEDISTANCE" Type="UDINT" Comment="Radbasierte Maschinendistanz (PGN 65096, SPN 1863)"/>
+			<VarDeclaration Name="WHEELBASEDMACHINEDIRECTION" Type="BYTE" Comment="Radbasierte Fahrtrichtung (PGN 65096, SPN 1864)"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="Button_WBSD" Type="isobus::UT::io::Button::Button_IE" x="100" y="1600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="PARAMS" Value="''"/>
+			<Parameter Name="u16ObjId" Value="Button_WBSD"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="E_T_FF_SR" Type="iec61499::events::E_T_FF_SR" x="2600" y="1600">
+		</FB>
+		<FB Name="WBSD_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="5000" y="1500">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_WBSD_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#TRUE"/>
+		</FB>
+		<FB Name="F_MOVE" Type="iec61131::selection::F_MOVE" x="7300" y="1600">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="I_WBSD" Type="isobus::tecu::I_WBSD" x="9700" y="1600">
+			<Parameter Name="QI" Value="FALSE"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="Button_WBSD.IND" Destination="E_T_FF_SR.S" dx1="646.67"/>
+			<Connection Source="Button_WBSD.IND" Destination="Chosen" dx1="646.67"/>
+			<Connection Source="Reset" Destination="E_T_FF_SR.R" dx1="6446.67"/>
+			<Connection Source="E_T_FF_SR.EO" Destination="WBSD_Selected.SET" dx1="693.33"/>
+			<Connection Source="WBSD_Selected.SETO" Destination="F_MOVE.REQ" dx1="306.67"/>
+			<Connection Source="WBSD_Selected.GETO" Destination="F_MOVE.REQ" dx1="306.67"/>
+			<Connection Source="F_MOVE.CNF" Destination="Updated" dx1="286.67"/>
+			<Connection Source="I_WBSD.IND" Destination="IND" dx1="400"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="E_T_FF_SR.Q" Destination="WBSD_Selected.VALUE" dx1="740"/>
+			<Connection Source="WBSD_Selected.VALUEO" Destination="F_MOVE.IN" dx1="306.67"/>
+			<Connection Source="F_MOVE.OUT" Destination="I_WBSD.QI" dx1="560"/>
+			<Connection Source="F_MOVE.OUT" Destination="Selected" dx1="560"/>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINESPEED" Destination="WHEELBASEDMACHINESPEED" dx1="2266.67"/>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINEDISTANCE" Destination="WHEELBASEDMACHINEDISTANCE" dx1="2026.67"/>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINEDIRECTION" Destination="WHEELBASEDMACHINEDIRECTION" dx1="2346.67"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>
