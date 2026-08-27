@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SubAppType Name="Einstellungen" Comment="Subapplication Type">
+<SubAppType Name="Einstellungen" Comment="Verwaltet die Einstellungen des Automatikablaufs (Pflanzabstand, Versatz und Ansteuerdauer je Aktor); Werte werden ueber Eingabefelder auf dem Terminal geaendert, persistent im NVS gespeichert und beim Start eingelesen">
 	<Identification Standard="61499-2">
 	</Identification>
 	<VersionInfo Version="1.0" Author="Elias" Date="2024-04-23">
@@ -19,14 +19,14 @@
 	</CompilerInfo>
 	<SubAppInterfaceList>
 		<OutputVars>
-			<VarDeclaration Name="PflanzenAbstand" Type="UDINT" Comment="Pflanzabstand" InitialValue="12345"/>
-			<VarDeclaration Name="SummerDauer" Type="TIME"/>
-			<VarDeclaration Name="GranulatVersatz" Type="UDINT" InitialValue="12345"/>
-			<VarDeclaration Name="GranulatDauer" Type="TIME"/>
-			<VarDeclaration Name="LuftVersatz" Type="UDINT" InitialValue="12345"/>
-			<VarDeclaration Name="LuftDauer" Type="TIME"/>
-			<VarDeclaration Name="WasserVersatz" Type="UDINT" InitialValue="12345"/>
-			<VarDeclaration Name="WasserDauer" Type="TIME"/>
+			<VarDeclaration Name="PflanzenAbstand" Type="UDINT" Comment="Abstand zwischen zwei Pflanzpositionen in mm" InitialValue="12345"/>
+			<VarDeclaration Name="SummerDauer" Type="TIME" Comment="Ansteuerdauer des Summers je Pflanzposition"/>
+			<VarDeclaration Name="GranulatVersatz" Type="UDINT" Comment="Versatz (Abstand) zwischen Ausloesepunkt und Granulatschieber in mm" InitialValue="12345"/>
+			<VarDeclaration Name="GranulatDauer" Type="TIME" Comment="Ansteuerdauer des Granulatschiebers je Pflanzposition"/>
+			<VarDeclaration Name="LuftVersatz" Type="UDINT" Comment="Versatz (Abstand) zwischen Ausloesepunkt und Luftventil in mm" InitialValue="12345"/>
+			<VarDeclaration Name="LuftDauer" Type="TIME" Comment="Ansteuerdauer des Luftventils je Pflanzposition"/>
+			<VarDeclaration Name="WasserVersatz" Type="UDINT" Comment="Versatz (Abstand) zwischen Ausloesepunkt und Wasserventil in mm" InitialValue="12345"/>
+			<VarDeclaration Name="WasserDauer" Type="TIME" Comment="Ansteuerdauer des Wasserventils je Pflanzposition"/>
 		</OutputVars>
 	</SubAppInterfaceList>
 	<SubAppNetwork>

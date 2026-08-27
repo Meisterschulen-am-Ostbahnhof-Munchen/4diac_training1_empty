@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SubAppType Name="Summer" Comment="Subapplication Type">
+<SubAppType Name="Summer" Comment="Steuert den digitalen Ausgang (MI_00 / DigitalOutput_3A) fuer den Summer (akustisches Signal) und meldet dessen Ist-Zustand sowie Status zurueck">
 	<Identification Standard="61499-2">
 	</Identification>
 	<VersionInfo Version="1.0" Author="Elias" Date="2024-04-23">
@@ -10,19 +10,19 @@
 	</CompilerInfo>
 	<SubAppInterfaceList>
 		<SubAppEventInputs>
-			<SubAppEvent Name="REQ" Type="Event">
+			<SubAppEvent Name="REQ" Type="Event" Comment="Anforderung: Ausgang gemaess OUT ansteuern">
 			</SubAppEvent>
 		</SubAppEventInputs>
 		<SubAppEventOutputs>
-			<SubAppEvent Name="CNF" Type="Event">
+			<SubAppEvent Name="CNF" Type="Event" Comment="Bestaetigung: Ansteuerung abgeschlossen">
 			</SubAppEvent>
 		</SubAppEventOutputs>
 		<InputVars>
-			<VarDeclaration Name="OUT" Type="BOOL"/>
+			<VarDeclaration Name="OUT" Type="BOOL" Comment="Sollwert des Ausgangs (TRUE = Summer aktiv)"/>
 		</InputVars>
 		<OutputVars>
-			<VarDeclaration Name="QO" Type="BOOL"/>
-			<VarDeclaration Name="STATUS" Type="STRING"/>
+			<VarDeclaration Name="QO" Type="BOOL" Comment="Rueckgelesener Ist-Zustand des digitalen Ausgangs"/>
+			<VarDeclaration Name="STATUS" Type="STRING" Comment="Status-/Diagnosemeldung des digitalen Ausgangs"/>
 		</OutputVars>
 	</SubAppInterfaceList>
 	<SubAppNetwork>

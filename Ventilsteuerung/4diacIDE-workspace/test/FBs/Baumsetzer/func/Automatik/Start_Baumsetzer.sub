@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SubAppType Name="Start_Baumsetzer" Comment="Subapplication Type">
+<SubAppType Name="Start_Baumsetzer" Comment="Automatikablauf des Baumsetzers: startet/stoppt den Pflanzvorgang per Softkey, erzeugt distanzabhaengige Impulse fuer die Aktoren (Granulatschieber, Luftventil, Summer, Wasserventil) sowie ein Dauersignal fuer die Wasserpumpe und stoesst die Einsatzdauerzaehlung an">
 	<Identification Standard="61499-2">
 	</Identification>
 	<VersionInfo Version="1.0" Author="Elias" Date="2024-07-12">
@@ -13,31 +13,31 @@
 	</CompilerInfo>
 	<SubAppInterfaceList>
 		<SubAppEventInputs>
-			<SubAppEvent Name="VT_Active" Type="Event">
+			<SubAppEvent Name="VT_Active" Type="Event" Comment="Terminal aktiv (Aktualisierung der Anzeige anfordern)">
 			</SubAppEvent>
 			<SubAppEvent Name="STOP" Type="Event" Comment="Stop Event">
 			</SubAppEvent>
 		</SubAppEventInputs>
 		<SubAppEventOutputs>
-			<SubAppEvent Name="Start" Type="Event">
+			<SubAppEvent Name="Start" Type="Event" Comment="Automatikablauf wurde gestartet">
 			</SubAppEvent>
-			<SubAppEvent Name="Pulse_Granulat" Type="Event" Comment="Pulse">
+			<SubAppEvent Name="Pulse_Granulat" Type="Event" Comment="Impuls: Granulatschieber an der berechneten Pflanzposition fuer die eingestellte Dauer (GranulatDauer) ansteuern">
 			</SubAppEvent>
-			<SubAppEvent Name="Pulse_Summer" Type="Event">
+			<SubAppEvent Name="Pulse_Summer" Type="Event" Comment="Impuls: Summer an der berechneten Pflanzposition fuer die eingestellte Dauer (SummerDauer) ansteuern">
 			</SubAppEvent>
-			<SubAppEvent Name="Pulse_Luft" Type="Event">
+			<SubAppEvent Name="Pulse_Luft" Type="Event" Comment="Impuls: Luftventil an der berechneten Pflanzposition fuer die eingestellte Dauer (LuftDauer) ansteuern">
 			</SubAppEvent>
-			<SubAppEvent Name="Pulse_Wasser" Type="Event">
+			<SubAppEvent Name="Pulse_Wasser" Type="Event" Comment="Impuls: Wasserventil an der berechneten Pflanzposition fuer die eingestellte Dauer (WasserDauer) ansteuern">
 			</SubAppEvent>
-			<SubAppEvent Name="Pulse_Wasserpumpe" Type="Event">
+			<SubAppEvent Name="Pulse_Wasserpumpe" Type="Event" Comment="Impuls: Wasserpumpe wird waehrend des gesamten Automatiklaufs (Start bis Stop) angesteuert">
 			</SubAppEvent>
 		</SubAppEventOutputs>
 		<OutputVars>
-			<VarDeclaration Name="Granulatschieber" Type="BOOL" Comment="Granulatschieber"/>
-			<VarDeclaration Name="Luftventil" Type="BOOL" Comment="Luftventil"/>
-			<VarDeclaration Name="Summer" Type="BOOL" Comment="Summer"/>
-			<VarDeclaration Name="Wasserpumpe" Type="BOOL" Comment="Wasserpumpe"/>
-			<VarDeclaration Name="Wasserventil" Type="BOOL" Comment="Wasserventil"/>
+			<VarDeclaration Name="Granulatschieber" Type="BOOL" Comment="Ansteuersignal fuer den Granulatschieber (TRUE waehrend des distanzbasierten Impulses)"/>
+			<VarDeclaration Name="Luftventil" Type="BOOL" Comment="Ansteuersignal fuer das Luftventil (TRUE waehrend des distanzbasierten Impulses)"/>
+			<VarDeclaration Name="Summer" Type="BOOL" Comment="Ansteuersignal fuer den Summer (TRUE waehrend des distanzbasierten Impulses)"/>
+			<VarDeclaration Name="Wasserpumpe" Type="BOOL" Comment="Ansteuersignal fuer die Wasserpumpe (TRUE waehrend des gesamten Automatiklaufs)"/>
+			<VarDeclaration Name="Wasserventil" Type="BOOL" Comment="Ansteuersignal fuer das Wasserventil (TRUE waehrend des distanzbasierten Impulses)"/>
 		</OutputVars>
 	</SubAppInterfaceList>
 	<SubAppNetwork>
