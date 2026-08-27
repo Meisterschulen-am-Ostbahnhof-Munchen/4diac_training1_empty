@@ -33,4 +33,5 @@
 			<Connection Source="E_D_FF.Q" Destination="VALID.D1"/>
 		</DataConnections>
 	</FBNetwork>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </FBType>

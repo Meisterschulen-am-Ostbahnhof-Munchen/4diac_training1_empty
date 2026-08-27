@@ -92,4 +92,5 @@
 			<Connection Source="F_CONCAT_DT.OUT" Destination="TD" dx1="3353.33"/>
 		</DataConnections>
 	</FBNetwork>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </FBType>
