@@ -52,4 +52,5 @@
 			<Connection Source="I_WBSD.WHEELBASEDMACHINEDISTANCE" Destination="DISTANCE.D1" dx1="66.67"/>
 		</DataConnections>
 	</FBNetwork>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </FBType>

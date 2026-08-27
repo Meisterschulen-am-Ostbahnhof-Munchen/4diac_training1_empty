@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Zaehler_Einsatzdauer" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Franz" Date="2023-02-17">
+	</VersionInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="CU" Type="Event" Comment="Count Up">
+			</SubAppEvent>
+			<SubAppEvent Name="CD" Type="Event" Comment="Count Down">
+			</SubAppEvent>
+			<SubAppEvent Name="R" Type="Event" Comment="Reset">
+			</SubAppEvent>
+			<SubAppEvent Name="rVT" Type="Event" Comment="refresh VT">
+			</SubAppEvent>
+		</SubAppEventInputs>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="CNF" Type="Event" Comment="Confirmation -- Counter Value was changed">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+		<InputVars>
+			<VarDeclaration Name="KEY_Std" Type="STRING"/>
+			<VarDeclaration Name="KEY_Min" Type="STRING"/>
+			<VarDeclaration Name="u16ObjId_Std" Type="UINT"/>
+			<VarDeclaration Name="u16ObjId_Min" Type="UINT"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="CV" Type="UDINT" Comment="Counter Value"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="E_CTUD_UDINT" Type="iec61499::events::E_CTUD_UDINT" x="400" y="400">
+		</FB>
+		<FB Name="Einsatzdauer_Stunden" Type="isobus::UT::Q::Q_NumericValue" x="22278.26" y="900">
+		</FB>
+		<FB Name="NVS_UDINT_Std" Type="logiBUS::storage::esp32_nvs::NVS" x="300" y="2200">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="DEFAULT_VALUE" Value="int#0"/>
+		</FB>
+		<FB Name="UDINT2UDINT_4" Type="iec61131::selection::F_MOVE" x="12200" y="3000">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="F_MOD" Type="iec61131::arithmetic::F_MOD" x="13500" y="3600">
+			<Parameter Name="IN2" Value="UDINT#60"/>
+		</FB>
+		<FB Name="Min_to_Hour" Type="iec61131::arithmetic::F_DIV" x="13500" y="3000">
+			<Parameter Name="IN2" Value="UDINT#60"/>
+		</FB>
+		<FB Name="Sec_to_Min" Type="iec61131::arithmetic::F_DIV" x="10800" y="3000">
+			<Parameter Name="IN2" Value="UDINT#60"/>
+		</FB>
+		<FB Name="NVS_UDINT_Min" Type="logiBUS::storage::esp32_nvs::NVS" x="300" y="3600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="DEFAULT_VALUE" Value="int#0"/>
+		</FB>
+		<FB Name="Einsatzdauer_Minuten" Type="isobus::UT::Q::Q_NumericValue" x="22300" y="1800">
+		</FB>
+		<FB Name="UDINT2UDINT_5" Type="iec61131::selection::F_MOVE" x="15100" y="3000">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="UDINT2UDINT_6" Type="iec61131::selection::F_MOVE" x="15100" y="3600">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="F_MUL" Type="iec61131::arithmetic::F_MUL" x="3800" y="2400">
+			<Parameter Name="IN2" Value="UINT#60"/>
+		</FB>
+		<FB Name="UDINT2UDINT_7" Type="iec61131::selection::F_MOVE" x="2400" y="2400">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="UDINT2UDINT_8" Type="iec61131::selection::F_MOVE" x="4500" y="2400">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="ADD_2" Type="iec61131::arithmetic::ADD_2" x="5500" y="2400">
+		</FB>
+		<FB Name="UDINT2UDINT_9" Type="iec61131::selection::F_MOVE" x="2400" y="3800">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="F_MUL_1" Type="iec61131::arithmetic::F_MUL" x="7400" y="2400">
+			<Parameter Name="IN2" Value="UINT#60"/>
+		</FB>
+		<FB Name="UDINT2UDINT_10" Type="iec61131::selection::F_MOVE" x="6300" y="2400">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="CU" Destination="E_CTUD_UDINT.CU" dx1="886.67"/>
+			<Connection Source="CD" Destination="E_CTUD_UDINT.CD" dx1="780"/>
+			<Connection Source="R" Destination="E_CTUD_UDINT.R" dx1="793.33"/>
+			<Connection Source="E_CTUD_UDINT.LDO" Destination="CNF" dx1="2606.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_4.CNF" Destination="F_MOD.REQ" dx1="280"/>
+			<Connection Source="UDINT2UDINT_4.CNF" Destination="Min_to_Hour.REQ" dx1="306.67"/>
+			<Connection Source="Min_to_Hour.CNF" Destination="UDINT2UDINT_5.REQ" dx1="533.33"/>
+			<Connection Source="F_MOD.CNF" Destination="UDINT2UDINT_6.REQ"/>
+			<Connection Source="UDINT2UDINT_5.CNF" Destination="NVS_UDINT_Std.SET" dx1="52.17" dx2="52.17" dy="-317.39">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_6.CNF" Destination="NVS_UDINT_Min.SET" dx1="52.17" dx2="52.17" dy="100">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_CTUD_UDINT.LDO" Destination="Einsatzdauer_Stunden.REQ" dx1="10560.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_CTUD_UDINT.LDO" Destination="Einsatzdauer_Minuten.REQ" dx1="10569.57">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_5.CNF" Destination="CNF" dx1="4339.13">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_6.CNF" Destination="Einsatzdauer_Minuten.REQ" dx1="2586.96"/>
+			<Connection Source="UDINT2UDINT_5.CNF" Destination="Einsatzdauer_Stunden.REQ" dx1="1239.13"/>
+			<Connection Source="NVS_UDINT_Std.GETO" Destination="UDINT2UDINT_7.REQ" dx1="552.17"/>
+			<Connection Source="UDINT2UDINT_7.CNF" Destination="F_MUL.REQ" dx1="360"/>
+			<Connection Source="F_MUL.CNF" Destination="UDINT2UDINT_8.REQ"/>
+			<Connection Source="UDINT2UDINT_8.CNF" Destination="ADD_2.REQ"/>
+			<Connection Source="NVS_UDINT_Min.GETO" Destination="UDINT2UDINT_9.REQ" dx1="552.17"/>
+			<Connection Source="E_CTUD_UDINT.RO" Destination="Sec_to_Min.REQ" dx1="4852.17">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_CTUD_UDINT.CO" Destination="Sec_to_Min.REQ" dx1="4852.17">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="ADD_2.CNF" Destination="UDINT2UDINT_10.REQ" dx1="133.33"/>
+			<Connection Source="UDINT2UDINT_10.CNF" Destination="F_MUL_1.REQ" dx1="206.67"/>
+			<Connection Source="F_MUL_1.CNF" Destination="E_CTUD_UDINT.LD" dx1="52.17" dx2="52.17" dy="-847.83"/>
+			<Connection Source="Sec_to_Min.CNF" Destination="UDINT2UDINT_4.REQ" dx1="440"/>
+			<Connection Source="rVT" Destination="Einsatzdauer_Stunden.REQ" dx1="12765.22">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="rVT" Destination="Einsatzdauer_Minuten.REQ" dx1="12778.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="NVS_UDINT_Std.INITO" Destination="NVS_UDINT_Std.GET" dx1="80" dx2="80" dy="-200"/>
+			<Connection Source="NVS_UDINT_Min.INITO" Destination="NVS_UDINT_Min.GET" dx1="80" dx2="80" dy="-240"/>
+			<Connection Source="rVT" Destination="NVS_UDINT_Std.GET" dx1="1846.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="rVT" Destination="NVS_UDINT_Min.GET" dx1="1846.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="E_CTUD_UDINT.CV" Destination="CV" dx1="173.33"/>
+			<Connection Source="u16ObjId_Std" Destination="Einsatzdauer_Stunden.u16ObjId" dx1="2840">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="KEY_Std" Destination="NVS_UDINT_Std.KEY" dx1="3508.7">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_4.OUT" Destination="Min_to_Hour.IN1"/>
+			<Connection Source="UDINT2UDINT_4.OUT" Destination="F_MOD.IN1" dx1="226.67"/>
+			<Connection Source="KEY_Min" Destination="NVS_UDINT_Min.KEY" dx1="3078.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="u16ObjId_Min" Destination="Einsatzdauer_Minuten.u16ObjId" dx1="12960.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Min_to_Hour.OUT" Destination="UDINT2UDINT_5.IN"/>
+			<Connection Source="UDINT2UDINT_5.OUT" Destination="NVS_UDINT_Std.VALUE" dx1="52.17" dx2="52.17" dy="-165.22">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOD.OUT" Destination="UDINT2UDINT_6.IN"/>
+			<Connection Source="UDINT2UDINT_6.OUT" Destination="NVS_UDINT_Min.VALUE" dx1="52.17" dx2="52.17" dy="247.83">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_6.OUT" Destination="Einsatzdauer_Minuten.u32NewValue" dx1="2943.48"/>
+			<Connection Source="UDINT2UDINT_5.OUT" Destination="Einsatzdauer_Stunden.u32NewValue" dx1="1534.78"/>
+			<Connection Source="NVS_UDINT_Std.VALUEO" Destination="UDINT2UDINT_7.IN" dx1="552.17"/>
+			<Connection Source="UDINT2UDINT_7.OUT" Destination="F_MUL.IN1"/>
+			<Connection Source="F_MUL.OUT" Destination="UDINT2UDINT_8.IN"/>
+			<Connection Source="UDINT2UDINT_8.OUT" Destination="ADD_2.IN1"/>
+			<Connection Source="NVS_UDINT_Min.VALUEO" Destination="UDINT2UDINT_9.IN" dx1="604.35"/>
+			<Connection Source="UDINT2UDINT_9.OUT" Destination="ADD_2.IN2" dx1="2240"/>
+			<Connection Source="E_CTUD_UDINT.CV" Destination="Sec_to_Min.IN1" dx1="7930.43"/>
+			<Connection Source="ADD_2.OUT" Destination="UDINT2UDINT_10.IN"/>
+			<Connection Source="UDINT2UDINT_10.OUT" Destination="F_MUL_1.IN1"/>
+			<Connection Source="F_MUL_1.OUT" Destination="E_CTUD_UDINT.PV" dx1="139.13" dx2="139.13" dy="-847.83"/>
+			<Connection Source="Sec_to_Min.OUT" Destination="UDINT2UDINT_4.IN"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

@@ -27,7 +27,7 @@
 		</OutputVars>
 	</InterfaceList>
 	<FunctionBody>
-		<ST><![CDATA[PACKAGE isobus::PGN;
+		<ST><![CDATA[PACKAGE isobus::pgn;
 
 (* Manipulate NetEv *)
 FUNCTION NetEv2NetEv : ISONETEVENT_T

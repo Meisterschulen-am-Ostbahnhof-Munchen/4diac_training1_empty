@@ -62,4 +62,5 @@ END_FUNCTION
  * hm	16. nov. 2008	rev 1.2 initialized constants with 0 for compatibility reasons *)
 ]]></ST>
 	</FunctionBody>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </Function>

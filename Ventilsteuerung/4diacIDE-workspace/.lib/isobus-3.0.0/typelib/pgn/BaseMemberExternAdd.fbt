@@ -31,4 +31,5 @@
 			<VarDeclaration Name="s16Handle" Type="INT" Comment="Handle of the added member"/>
 		</OutputVars>
 	</InterfaceList>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </FBType>

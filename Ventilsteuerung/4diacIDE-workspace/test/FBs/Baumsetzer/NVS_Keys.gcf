@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalConstants Name="NVS_Keys" Comment="Global constants">
+	<Identification Standard="61499-1">
+	</Identification>
+	<VersionInfo Version="1.0" Author="franz" Date="2024-02-25">
+	</VersionInfo>
+	<CompilerInfo>
+	</CompilerInfo>
+	<GlobalConstants>
+		<VarDeclaration Name="Key_Pflanzabstand_Store" Type="STRING" InitialValue="'K_I1'"/>
+		<VarDeclaration Name="Key_Luftversatz_Store" Type="STRING" InitialValue="'K_I2'"/>
+		<VarDeclaration Name="Key_Wasserversatz_Store" Type="STRING" InitialValue="'K_I3'"/>
+		<VarDeclaration Name="Key_Granulatversatz_Store" Type="STRING" InitialValue="'K_I4'"/>
+		<VarDeclaration Name="Key_Arbeitsminuten_Store" Type="STRING" InitialValue="'K_I5'"/>
+		<VarDeclaration Name="Key_Einsatzdauer_Stunden_Store" Type="STRING" InitialValue="'K_I6'"/>
+		<VarDeclaration Name="Key_Einsatzdauer_Minuten_Store" Type="STRING" InitialValue="'K_I7'"/>
+		<VarDeclaration Name="Key_Baumzaehler_Store" Type="STRING" InitialValue="'Baumzaehler'"/>
+		<VarDeclaration Name="Key_Summer_Dauer_Store" Type="STRING" InitialValue="'K_I14'"/>
+		<VarDeclaration Name="Key_Granulat_Dauer_Store" Type="STRING" InitialValue="'K_I15'"/>
+		<VarDeclaration Name="Key_Luft_Dauer_Store" Type="STRING" InitialValue="'K_I16'"/>
+		<VarDeclaration Name="Key_Wasser_Dauer_Store" Type="STRING" InitialValue="'K_I_17'"/>
+		<VarDeclaration Name="Key_VDS_Store" Type="STRING" InitialValue="'K_I_18'"/>
+		<VarDeclaration Name="Key_WBSD_Store" Type="STRING" InitialValue="'K_I_19'"/>
+		<VarDeclaration Name="Key_GBSD_Store" Type="STRING" InitialValue="'K_I_20'"/>
+		<VarDeclaration Name="Key_MSS_Store" Type="STRING" InitialValue="'K_I_21'"/>
+		<VarDeclaration Name="Key_NMEA_Store" Type="STRING" InitialValue="'K_I_22'"/>
+		<VarDeclaration Name="Key_Summer_Reset_Store" Type="STRING" InitialValue="'K_I_23'"/>
+	</GlobalConstants>
+	<OriginalSource><![CDATA[GLOBALCONSTANTS NVS_Keys
+	VAR_GLOBAL CONSTANT
+		Key_Pflanzabstand_Store : STRING := 'K_I1';
+		Key_Luftversatz_Store : STRING := 'K_I2';
+		Key_Wasserversatz_Store : STRING := 'K_I3';
+		Key_Granulatversatz_Store : STRING := 'K_I4';
+		Key_Arbeitsminuten_Store : STRING := 'K_I5';
+		Key_Einsatzdauer_Stunden_Store : STRING := 'K_I6';
+		Key_Einsatzdauer_Minuten_Store : STRING := 'K_I7';
+		Key_Baumzaehler_Store : STRING := 'Baumzaehler';
+		Key_Summer_Dauer_Store : STRING := 'K_I14';
+		Key_Granulat_Dauer_Store : STRING := 'K_I15';
+		Key_Luft_Dauer_Store : STRING := 'K_I16';
+		Key_Wasser_Dauer_Store : STRING := 'K_I_17';
+		Key_VDS_Store : STRING := 'K_I_18';
+		Key_WBSD_Store : STRING := 'K_I_19';
+		Key_GBSD_Store : STRING := 'K_I_20';
+		Key_MSS_Store : STRING := 'K_I_21';
+		Key_NMEA_Store : STRING := 'K_I_22';
+		Key_Summer_Reset_Store : STRING := 'K_I_23';
+	END_VAR
+END_GLOBALCONSTANTS
+]]></OriginalSource>
+</GlobalConstants>

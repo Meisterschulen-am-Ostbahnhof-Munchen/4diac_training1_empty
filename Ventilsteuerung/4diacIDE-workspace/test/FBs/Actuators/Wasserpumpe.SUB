@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Wasserpumpe" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Elias" Date="2024-04-23">
+	</VersionInfo>
+	<CompilerInfo>
+		<Import declaration="DataPanel::io::MI::DQ::DataPanel_MI_DO::DigitalOutput_4A"/>
+		<Import declaration="DataPanel::io::MI::const::MI::MI_00"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="REQ" Type="Event">
+			</SubAppEvent>
+		</SubAppEventInputs>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="CNF" Type="Event">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+		<InputVars>
+			<VarDeclaration Name="OUT" Type="BOOL"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="QO" Type="BOOL"/>
+			<VarDeclaration Name="STATUS" Type="STRING"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="Wasserpumpe" Type="DataPanel::io::MI::DQ::DataPanel_MI_QX" x="521.74" y="-695.65">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="PARAMS" Value="''"/>
+			<Parameter Name="OUT" Value="FALSE"/>
+			<Parameter Name="u8SAMember" Value="MI_00"/>
+			<Parameter Name="Output" Value="DigitalOutput_4A"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="REQ" Destination="Wasserpumpe.REQ" dx1="1013.33"/>
+			<Connection Source="Wasserpumpe.CNF" Destination="CNF" dx1="769.57"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="OUT" Destination="Wasserpumpe.OUT" dx1="913.04"/>
+			<Connection Source="Wasserpumpe.QO" Destination="QO" dx1="769.57"/>
+			<Connection Source="Wasserpumpe.STATUS" Destination="STATUS" dx1="769.57"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

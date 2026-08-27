@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Speed_Selection" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Elias" Date="2025-04-01">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::Baumsetzer::func::Automatik">
+		<Import declaration="NVS_Keys::Key_GBSD_Store"/>
+		<Import declaration="NVS_Keys::Key_MSS_Store"/>
+		<Import declaration="NVS_Keys::Key_NMEA_Store"/>
+		<Import declaration="NVS_Keys::Key_VDS_Store"/>
+		<Import declaration="NVS_Keys::Key_WBSD_Store"/>
+		<Import declaration="isobus::UT::Q::const::colours::COLOR_GREEN"/>
+		<Import declaration="isobus::UT::Q::const::colours::COLOR_RED"/>
+		<Import declaration="isobus::UT::io::Button::ButtonActivationCode::BT_RELEASED_UNLATCHED"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_GBSD"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_MSS"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_NMEA"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_VDS"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_WBSD"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="CNF" Type="Event" Comment="Execution Confirmation">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="Speed" Type="UDINT" Comment="Speed of selected Signal"/>
+			<VarDeclaration Name="Direction" Type="UDINT" Comment="Direction of selected Signal"/>
+			<VarDeclaration Name="Distance" Type="UDINT" Comment="Distance of selected Signal"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="I_MSS" Type="isobus::tecu::I_MSS" x="2700" y="4800">
+			<Parameter Name="QI" Value="FALSE"/>
+		</FB>
+		<FB Name="I_GBSD" Type="isobus::tecu::I_GBSD" x="2700" y="3400">
+			<Parameter Name="QI" Value="FALSE"/>
+		</FB>
+		<FB Name="I_WBSD" Type="isobus::tecu::I_WBSD" x="2700" y="1600">
+			<Parameter Name="QI" Value="FALSE"/>
+		</FB>
+		<FB Name="I_VDS" Type="isobus::tecu::I_VDS" x="2700" y="100">
+			<Parameter Name="QI" Value="FALSE"/>
+		</FB>
+		<FB Name="Button_VDS" Type="isobus::UT::io::Button::Button_IE" x="-4700" y="-100">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_VDS"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="Button_WBSD" Type="isobus::UT::io::Button::Button_IE" x="-4700" y="1400">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="PARAMS" Value="''"/>
+			<Parameter Name="u16ObjId" Value="Button_WBSD"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="Button_GBSD" Type="isobus::UT::io::Button::Button_IE" x="-4700" y="3200">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_GBSD"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="Button_MSS" Type="isobus::UT::io::Button::Button_IE" x="-4700" y="4600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_MSS"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="F_UINT_TO_REAL" Type="iec61131::conversion::F_UINT_TO_REAL" x="4600" y="200">
+		</FB>
+		<FB Name="CYCLE_TIME" Type="logiBUS::utils::timing::CYCLE_TIME" x="4800" y="700">
+		</FB>
+		<FB Name="INTEGRAL" Type="logiBUS::utils::math::INTEGRAL" x="6100" y="200">
+		</FB>
+		<FB Name="E_T_FF_SR" Type="iec61499::events::E_T_FF_SR" x="-2700" y="100">
+		</FB>
+		<FB Name="E_T_FF_SR_1" Type="iec61499::events::E_T_FF_SR" x="-2700" y="1600">
+		</FB>
+		<FB Name="E_T_FF_SR_2" Type="iec61499::events::E_T_FF_SR" x="-2700" y="3400">
+		</FB>
+		<FB Name="E_T_FF_SR_3" Type="iec61499::events::E_T_FF_SR" x="-2700" y="4800">
+		</FB>
+		<FB Name="F_SEL_E_Distance" Type="eclipse4diac::utils::selection::F_SEL_E_4" x="9700" y="1000">
+		</FB>
+		<FB Name="F_SEL_E_Speed" Type="eclipse4diac::utils::selection::F_SEL_E_4" x="9800" y="2400">
+		</FB>
+		<FB Name="F_SEL_E_Direction" Type="eclipse4diac::utils::selection::F_SEL_E_4" x="9800" y="4000">
+		</FB>
+		<FB Name="COGSOGRapidUpdate" Type="isobus::tecu::I_COGSOGRapidUpdate" x="2600" y="6800">
+		</FB>
+		<FB Name="E_T_FF_SR_4" Type="iec61499::events::E_T_FF_SR" x="-2500" y="6800">
+		</FB>
+		<FB Name="Button_NMEA" Type="isobus::UT::io::Button::Button_IE" x="-4700" y="6600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_NMEA"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="INTEGRAL_1" Type="logiBUS::utils::math::INTEGRAL" x="8100" y="6900">
+		</FB>
+		<FB Name="CYCLE_TIME_1" Type="logiBUS::utils::timing::CYCLE_TIME" x="4900" y="7400">
+		</FB>
+		<FB Name="F_UINT_TO_REAL_1" Type="iec61131::conversion::F_UINT_TO_REAL" x="6700" y="6900">
+		</FB>
+		<FB Name="F_SEL_E_Distance_2" Type="eclipse4diac::utils::selection::F_SEL_E_2" x="12800" y="1000">
+		</FB>
+		<FB Name="F_SEL_E_Speed_2" Type="eclipse4diac::utils::selection::F_SEL_E_2" x="12900" y="2400">
+		</FB>
+		<FB Name="F_SEL_E_Direction_2" Type="eclipse4diac::utils::selection::F_SEL_E_2" x="12800" y="4000">
+		</FB>
+		<FB Name="UDINT2UDINT" Type="iec61131::selection::F_MOVE" x="11000" y="1000">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="UDINT2UDINT_1" Type="iec61131::selection::F_MOVE" x="11000" y="2400">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="UDINT2UDINT_2" Type="iec61131::selection::F_MOVE" x="11000" y="4000">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="E_PERMIT" Type="iec61499::events::E_PERMIT" x="7300" y="200">
+		</FB>
+		<FB Name="E_PERMIT_1" Type="iec61499::events::E_PERMIT" x="4300" y="1700">
+		</FB>
+		<FB Name="E_PERMIT_2" Type="iec61499::events::E_PERMIT" x="4300" y="3500">
+		</FB>
+		<FB Name="E_PERMIT_4" Type="iec61499::events::E_PERMIT" x="9900" y="6900">
+		</FB>
+		<FB Name="F_SEL" Type="iec61131::selection::F_SEL" x="18600" y="500">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour" Type="isobus::UT::Q::Q_BackgroundColour" x="20900" y="400">
+			<Parameter Name="u16ObjId" Value="Button_VDS"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_1" Type="isobus::UT::Q::Q_BackgroundColour" x="20900" y="2300">
+			<Parameter Name="u16ObjId" Value="Button_WBSD"/>
+		</FB>
+		<FB Name="F_SEL_1" Type="iec61131::selection::F_SEL" x="18600" y="2400">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_2" Type="isobus::UT::Q::Q_BackgroundColour" x="20800" y="3800">
+			<Parameter Name="u16ObjId" Value="Button_GBSD"/>
+		</FB>
+		<FB Name="F_SEL_2" Type="iec61131::selection::F_SEL" x="18600" y="3900">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_3" Type="isobus::UT::Q::Q_BackgroundColour" x="20900" y="5200">
+			<Parameter Name="u16ObjId" Value="Button_MSS"/>
+		</FB>
+		<FB Name="F_SEL_3" Type="iec61131::selection::F_SEL" x="18600" y="5300">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_4" Type="isobus::UT::Q::Q_BackgroundColour" x="20900" y="6900">
+			<Parameter Name="u16ObjId" Value="Button_NMEA"/>
+		</FB>
+		<FB Name="F_SEL_4" Type="iec61131::selection::F_SEL" x="18600" y="7000">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Geschwindigkeit" Type="isobus::UT::Q::Q_NumericValue" x="4200" y="-4900">
+			<Parameter Name="u16ObjId" Value="DefaultPool::OutputNumber_12000"/>
+		</FB>
+		<FB Name="Geschwindigkeit_1" Type="isobus::UT::Q::Q_NumericValue" x="4200" y="-4100">
+			<Parameter Name="u16ObjId" Value="DefaultPool::OutputNumber_12004"/>
+		</FB>
+		<FB Name="Geschwindigkeit_2" Type="isobus::UT::Q::Q_NumericValue" x="4200" y="-3300">
+			<Parameter Name="u16ObjId" Value="DefaultPool::OutputNumber_12005"/>
+		</FB>
+		<FB Name="Geschwindigkeit_3" Type="isobus::UT::Q::Q_NumericValue" x="4200" y="-2500">
+			<Parameter Name="u16ObjId" Value="DefaultPool::OutputNumber_12006"/>
+		</FB>
+		<FB Name="Geschwindigkeit_4" Type="isobus::UT::Q::Q_NumericValue" x="4200" y="-1700">
+			<Parameter Name="u16ObjId" Value="DefaultPool::OutputNumber_12007"/>
+		</FB>
+		<FB Name="F_MUL" Type="iec61131::arithmetic::F_MUL" x="4000" y="6900">
+			<Parameter Name="IN2" Value="uint#10"/>
+		</FB>
+		<FB Name="CYCLE_TIME_2" Type="logiBUS::utils::timing::CYCLE_TIME" x="5100" y="5700">
+		</FB>
+		<FB Name="E_PERMIT_5" Type="iec61499::events::E_PERMIT" x="9800" y="5200">
+		</FB>
+		<FB Name="INTEGRAL_2" Type="logiBUS::utils::math::INTEGRAL" x="6600" y="5200">
+		</FB>
+		<FB Name="F_UINT_TO_REAL_2" Type="iec61131::conversion::F_UINT_TO_REAL" x="5100" y="5200">
+		</FB>
+		<FB Name="F_REAL_TO_UDINT" Type="iec61131::conversion::F_REAL_TO_UDINT" x="7300" y="800">
+		</FB>
+		<FB Name="F_REAL_TO_UDINT_1" Type="iec61131::conversion::F_REAL_TO_UDINT" x="8200" y="6000">
+		</FB>
+		<FB Name="F_REAL_TO_UDINT_2" Type="iec61131::conversion::F_REAL_TO_UDINT" x="9300" y="7600">
+		</FB>
+		<FB Name="UDINT2UDINT_Distance" Type="iec61131::selection::F_MOVE" x="24200" y="-4500">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="UDINT2UDINT_Speed" Type="iec61131::selection::F_MOVE" x="24300" y="-3900">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="UDINT2UDINT_Direction" Type="iec61131::selection::F_MOVE" x="24200" y="-3200">
+			<Attribute Name="DataType" Value="UDINT"/>
+		</FB>
+		<FB Name="VDS_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="-500" y="0">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_VDS_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#FALSE"/>
+		</FB>
+		<FB Name="WBSD_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="-600" y="1500">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_WBSD_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#TRUE"/>
+		</FB>
+		<FB Name="GBSD_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="-500" y="3300">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_GBSD_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#FALSE"/>
+		</FB>
+		<FB Name="F_MOVE_2" Type="iec61131::selection::F_MOVE" x="1000" y="3400">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="MSS_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="-500" y="4700">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_MSS_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#FALSE"/>
+		</FB>
+		<FB Name="F_MOVE_3" Type="iec61131::selection::F_MOVE" x="1000" y="4800">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="NMEA_Selected" Type="logiBUS::storage::esp32_nvs::NVS" x="-600" y="6700">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_NMEA_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="bool#FALSE"/>
+		</FB>
+		<FB Name="F_MOVE_4" Type="iec61131::selection::F_MOVE" x="900" y="6800">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="F_MOVE" Type="iec61131::selection::F_MOVE" x="1000" y="100">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="F_MOVE_1" Type="iec61131::selection::F_MOVE" x="1000" y="1600">
+			<Attribute Name="DataType" Value="BOOL"/>
+		</FB>
+		<FB Name="F_MOVE_5" Type="iec61131::selection::F_MOVE" x="4800" y="6900">
+			<Attribute Name="DataType" Value="UINT"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="I_VDS.IND" Destination="F_UINT_TO_REAL.REQ" dx1="200"/>
+			<Connection Source="I_VDS.IND" Destination="CYCLE_TIME.REQ" dx1="320"/>
+			<Connection Source="F_UINT_TO_REAL.CNF" Destination="INTEGRAL.REQ" dx1="273.33"/>
+			<Connection Source="Button_VDS.IND" Destination="E_T_FF_SR.S" dx1="646.67"/>
+			<Connection Source="Button_WBSD.IND" Destination="E_T_FF_SR.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_GBSD.IND" Destination="E_T_FF_SR.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_MSS.IND" Destination="E_T_FF_SR.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_WBSD.IND" Destination="E_T_FF_SR_1.S" dx1="646.67"/>
+			<Connection Source="Button_VDS.IND" Destination="E_T_FF_SR_1.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_GBSD.IND" Destination="E_T_FF_SR_1.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_MSS.IND" Destination="E_T_FF_SR_1.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_GBSD.IND" Destination="E_T_FF_SR_2.S" dx1="646.67"/>
+			<Connection Source="Button_MSS.IND" Destination="E_T_FF_SR_2.R" dx1="486.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_WBSD.IND" Destination="E_T_FF_SR_2.R" dx1="486.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_VDS.IND" Destination="E_T_FF_SR_2.R" dx1="393.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_MSS.IND" Destination="E_T_FF_SR_3.S" dx1="646.67"/>
+			<Connection Source="Button_GBSD.IND" Destination="E_T_FF_SR_3.R" dx1="733.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_WBSD.IND" Destination="E_T_FF_SR_3.R" dx1="733.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_VDS.IND" Destination="E_T_FF_SR_3.R" dx1="633.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_WBSD.IND" Destination="E_T_FF_SR_4.R" dx1="733.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_VDS.IND" Destination="E_T_FF_SR_4.R" dx1="633.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_GBSD.IND" Destination="E_T_FF_SR_4.R" dx1="733.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_MSS.IND" Destination="E_T_FF_SR_4.R" dx1="733.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_NMEA.IND" Destination="E_T_FF_SR_1.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_NMEA.IND" Destination="E_T_FF_SR_4.S" dx1="746.67"/>
+			<Connection Source="Button_NMEA.IND" Destination="E_T_FF_SR_2.R" dx1="486.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_NMEA.IND" Destination="E_T_FF_SR.R" dx1="233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_NMEA.IND" Destination="E_T_FF_SR_3.R" dx1="633.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_UINT_TO_REAL_1.CNF" Destination="INTEGRAL_1.REQ" dx1="226.67"/>
+			<Connection Source="F_SEL_E_Distance.CNF" Destination="UDINT2UDINT.REQ" dx1="286.67"/>
+			<Connection Source="UDINT2UDINT.CNF" Destination="F_SEL_E_Distance_2.REQ1" dx1="593.33"/>
+			<Connection Source="F_SEL_E_Speed.CNF" Destination="UDINT2UDINT_1.REQ" dx1="246.67"/>
+			<Connection Source="UDINT2UDINT_1.CNF" Destination="F_SEL_E_Speed_2.REQ1" dx1="606.67"/>
+			<Connection Source="F_SEL_E_Direction.CNF" Destination="UDINT2UDINT_2.REQ" dx1="220"/>
+			<Connection Source="UDINT2UDINT_2.CNF" Destination="F_SEL_E_Direction_2.REQ1" dx1="606.67"/>
+			<Connection Source="F_MOVE_2.CNF" Destination="I_GBSD.INIT" dx1="553.33"/>
+			<Connection Source="F_MOVE_3.CNF" Destination="I_MSS.INIT" dx1="553.33"/>
+			<Connection Source="F_MOVE_4.CNF" Destination="COGSOGRapidUpdate.INIT" dx1="553.33"/>
+			<Connection Source="E_PERMIT.EO" Destination="F_SEL_E_Distance.REQ1" dx1="173.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="INTEGRAL.CNF" Destination="E_PERMIT.EI" dx1="326.67"/>
+			<Connection Source="E_PERMIT.EO" Destination="F_SEL_E_Speed.REQ1" dx1="406.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT.EO" Destination="F_SEL_E_Direction.REQ1" dx1="440">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_WBSD.IND" Destination="E_PERMIT_1.EI" dx1="400"/>
+			<Connection Source="E_PERMIT_1.EO" Destination="F_SEL_E_Distance.REQ2" dx1="1573.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_1.EO" Destination="F_SEL_E_Direction.REQ2" dx1="1640">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_1.EO" Destination="F_SEL_E_Speed.REQ2" dx1="1606.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_GBSD.IND" Destination="E_PERMIT_2.EI" dx1="400"/>
+			<Connection Source="E_PERMIT_2.EO" Destination="F_SEL_E_Distance.REQ3" dx1="1520">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_2.EO" Destination="F_SEL_E_Speed.REQ3" dx1="1560">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_2.EO" Destination="F_SEL_E_Direction.REQ3" dx1="1586.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="INTEGRAL_1.CNF" Destination="E_PERMIT_4.EI" dx1="626.67"/>
+			<Connection Source="E_PERMIT_4.EO" Destination="F_SEL_E_Direction_2.REQ2" dx1="1160">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_4.EO" Destination="F_SEL_E_Distance_2.REQ2" dx1="1146.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_4.EO" Destination="F_SEL_E_Speed_2.REQ2" dx1="1160">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL.CNF" Destination="Q_BackgroundColour.REQ" dx1="886.67"/>
+			<Connection Source="F_SEL_1.CNF" Destination="Q_BackgroundColour_1.REQ" dx1="886.67"/>
+			<Connection Source="F_SEL_2.CNF" Destination="Q_BackgroundColour_2.REQ" dx1="840"/>
+			<Connection Source="F_SEL_3.CNF" Destination="Q_BackgroundColour_3.REQ" dx1="886.67"/>
+			<Connection Source="F_SEL_4.CNF" Destination="Q_BackgroundColour_4.REQ" dx1="886.67"/>
+			<Connection Source="F_MOVE_2.CNF" Destination="F_SEL_2.REQ" dx1="6386.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_3.CNF" Destination="F_SEL_3.REQ" dx1="6386.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_4.CNF" Destination="F_SEL_4.REQ" dx1="6286.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_WBSD.IND" Destination="Geschwindigkeit.REQ" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_VDS.IND" Destination="Geschwindigkeit_1.REQ" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_GBSD.IND" Destination="Geschwindigkeit_2.REQ" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_MSS.IND" Destination="Geschwindigkeit_3.REQ" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="COGSOGRapidUpdate.IND" Destination="F_MUL.REQ" dx1="180"/>
+			<Connection Source="F_MOVE_5.CNF" Destination="CYCLE_TIME_1.REQ" dx1="80" dx2="80" dy="253.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_5.CNF" Destination="F_UINT_TO_REAL_1.REQ">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_5.CNF" Destination="Geschwindigkeit_4.REQ" dx1="80" dx2="80" dy="-4246.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_UINT_TO_REAL_2.CNF" Destination="INTEGRAL_2.REQ" dx1="280"/>
+			<Connection Source="INTEGRAL_2.CNF" Destination="E_PERMIT_5.EI" dx1="1326.67"/>
+			<Connection Source="I_MSS.IND" Destination="F_UINT_TO_REAL_2.REQ" dx1="766.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_MSS.IND" Destination="CYCLE_TIME_2.REQ" dx1="866.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_5.EO" Destination="F_SEL_E_Direction.REQ4" dx1="80" dx2="80" dy="-446.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_5.EO" Destination="F_SEL_E_Speed.REQ4" dx1="80" dx2="80" dy="-1246.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_5.EO" Destination="F_SEL_E_Distance.REQ4" dx1="80" dx2="80" dy="-1946.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT.EO" Destination="F_REAL_TO_UDINT.REQ" dx1="80" dx2="80" dy="300">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT_5.EO" Destination="F_REAL_TO_UDINT_1.REQ" dx1="80" dx2="80" dy="400"/>
+			<Connection Source="E_PERMIT_4.EO" Destination="F_REAL_TO_UDINT_2.REQ" dx1="80" dx2="80" dy="346.67"/>
+			<Connection Source="F_SEL_E_Distance_2.CNF" Destination="UDINT2UDINT_Distance.REQ" dx1="5346.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_Speed.CNF" Destination="CNF" dx1="2453.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_E_Speed_2.CNF" Destination="UDINT2UDINT_Speed.REQ" dx1="5333.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_E_Direction_2.CNF" Destination="UDINT2UDINT_Direction.REQ" dx1="5386.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_T_FF_SR.EO" Destination="VDS_Selected.SET" dx1="740"/>
+			<Connection Source="E_T_FF_SR_1.EO" Destination="WBSD_Selected.SET" dx1="693.33"/>
+			<Connection Source="E_T_FF_SR_2.EO" Destination="GBSD_Selected.SET" dx1="740"/>
+			<Connection Source="GBSD_Selected.SETO" Destination="F_MOVE_2.REQ" dx1="260"/>
+			<Connection Source="GBSD_Selected.GETO" Destination="F_MOVE_2.REQ" dx1="253.33"/>
+			<Connection Source="MSS_Selected.SETO" Destination="F_MOVE_3.REQ" dx1="253.33"/>
+			<Connection Source="MSS_Selected.GETO" Destination="F_MOVE_3.REQ" dx1="253.33"/>
+			<Connection Source="E_T_FF_SR_3.EO" Destination="MSS_Selected.SET" dx1="740"/>
+			<Connection Source="E_T_FF_SR_4.EO" Destination="NMEA_Selected.SET" dx1="593.33"/>
+			<Connection Source="NMEA_Selected.GETO" Destination="F_MOVE_4.REQ" dx1="253.33"/>
+			<Connection Source="NMEA_Selected.SETO" Destination="F_MOVE_4.REQ" dx1="253.33"/>
+			<Connection Source="VDS_Selected.SETO" Destination="F_MOVE.REQ" dx1="360"/>
+			<Connection Source="VDS_Selected.GETO" Destination="F_MOVE.REQ" dx1="360"/>
+			<Connection Source="F_MOVE.CNF" Destination="I_VDS.INIT" dx1="560"/>
+			<Connection Source="F_MOVE.CNF" Destination="F_SEL.REQ" dx1="8406.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="WBSD_Selected.SETO" Destination="F_MOVE_1.REQ" dx1="306.67"/>
+			<Connection Source="WBSD_Selected.GETO" Destination="F_MOVE_1.REQ" dx1="306.67"/>
+			<Connection Source="F_MOVE_1.CNF" Destination="I_WBSD.INIT" dx1="560"/>
+			<Connection Source="F_MOVE_1.CNF" Destination="F_SEL_1.REQ" dx1="8513.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MUL.CNF" Destination="F_MOVE_5.REQ"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="I_VDS.NavigationBasedVehicleSpeed" Destination="F_UINT_TO_REAL.IN" dx1="220"/>
+			<Connection Source="I_VDS.timestamp_data" Destination="CYCLE_TIME.TM" dx1="353.33"/>
+			<Connection Source="F_UINT_TO_REAL.OUT" Destination="INTEGRAL.IN" dx1="266.67"/>
+			<Connection Source="CYCLE_TIME.CYCLE" Destination="INTEGRAL.TM" dx1="266.67"/>
+			<Connection Source="F_MOVE_3.OUT" Destination="I_MSS.QI" dx1="606.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_2.OUT" Destination="I_GBSD.QI" dx1="906.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINEDISTANCE" Destination="F_SEL_E_Distance.IN2" dx1="2026.67"/>
+			<Connection Source="I_GBSD.GROUNDBASEDMACHINEDISTANCE" Destination="F_SEL_E_Distance.IN3" dx1="2106.67"/>
+			<Connection Source="I_VDS.NavigationBasedVehicleSpeed" Destination="F_SEL_E_Speed.IN1" dx1="2266.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINESPEED" Destination="F_SEL_E_Speed.IN2" dx1="2266.67"/>
+			<Connection Source="I_GBSD.GROUNDBASEDMACHINESPEED" Destination="F_SEL_E_Speed.IN3" dx1="2266.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_MSS.SELECTEDMACHINESPEED" Destination="F_SEL_E_Speed.IN4" dx1="2266.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_MSS.SELECTEDMACHINEDIRECTION" Destination="F_SEL_E_Direction.IN4" dx1="2346.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_GBSD.GROUNDBASEDMACHINEDIRECTION" Destination="F_SEL_E_Direction.IN3" dx1="2346.67"/>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINEDIRECTION" Destination="F_SEL_E_Direction.IN2" dx1="2346.67"/>
+			<Connection Source="F_MOVE_4.OUT" Destination="COGSOGRapidUpdate.QI" dx1="906.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="CYCLE_TIME_1.CYCLE" Destination="INTEGRAL_1.TM" dx1="266.67"/>
+			<Connection Source="F_UINT_TO_REAL_1.OUT" Destination="INTEGRAL_1.IN" dx1="226.67"/>
+			<Connection Source="COGSOGRapidUpdate.timestamp_data" Destination="CYCLE_TIME_1.TM" dx1="626.67"/>
+			<Connection Source="F_SEL_E_Distance.OUT" Destination="UDINT2UDINT.IN" dx1="220"/>
+			<Connection Source="F_SEL_E_Speed.OUT" Destination="UDINT2UDINT_1.IN" dx1="186.67"/>
+			<Connection Source="UDINT2UDINT_1.OUT" Destination="F_SEL_E_Speed_2.IN1" dx1="540"/>
+			<Connection Source="COGSOGRapidUpdate.SpeedOverGround" Destination="F_SEL_E_Speed_2.IN2" dx1="6820">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_E_Direction.OUT" Destination="UDINT2UDINT_2.IN" dx1="340"/>
+			<Connection Source="UDINT2UDINT_2.OUT" Destination="F_SEL_E_Direction_2.IN1" dx1="533.33"/>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINEDIRECTION" Destination="F_SEL_E_Direction.IN1" dx1="2346.67"/>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINEDIRECTION" Destination="F_SEL_E_Direction_2.IN2" dx1="2093.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_2.OUT" Destination="E_PERMIT_2.PERMIT" dx1="1233.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_4.OUT" Destination="E_PERMIT_4.PERMIT" dx1="3086.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL.OUT" Destination="Q_BackgroundColour.u8Colour" dx1="346.67"/>
+			<Connection Source="F_SEL_1.OUT" Destination="Q_BackgroundColour_1.u8Colour" dx1="880"/>
+			<Connection Source="F_MOVE_2.OUT" Destination="F_SEL_2.G" dx1="6386.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_2.OUT" Destination="Q_BackgroundColour_2.u8Colour" dx1="833.33"/>
+			<Connection Source="F_SEL_3.OUT" Destination="Q_BackgroundColour_3.u8Colour" dx1="880"/>
+			<Connection Source="F_MOVE_3.OUT" Destination="F_SEL_3.G" dx1="6386.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_4.OUT" Destination="Q_BackgroundColour_4.u8Colour" dx1="880"/>
+			<Connection Source="F_MOVE_4.OUT" Destination="F_SEL_4.G" dx1="8246.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_WBSD.WHEELBASEDMACHINESPEED" Destination="Geschwindigkeit.u32NewValue" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_VDS.NavigationBasedVehicleSpeed" Destination="Geschwindigkeit_1.u32NewValue" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_GBSD.GROUNDBASEDMACHINESPEED" Destination="Geschwindigkeit_2.u32NewValue" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="I_MSS.SELECTEDMACHINESPEED" Destination="Geschwindigkeit_3.u32NewValue" dx1="320">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="COGSOGRapidUpdate.SpeedOverGround" Destination="F_MUL.IN1" dx1="120"/>
+			<Connection Source="F_MOVE_5.OUT" Destination="F_UINT_TO_REAL_1.IN"/>
+			<Connection Source="F_MOVE_5.OUT" Destination="Geschwindigkeit_4.u32NewValue" dx1="80" dx2="80" dy="-4200">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="CYCLE_TIME_2.CYCLE" Destination="INTEGRAL_2.TM" dx1="266.67"/>
+			<Connection Source="F_UINT_TO_REAL_2.OUT" Destination="INTEGRAL_2.IN" dx1="266.67"/>
+			<Connection Source="I_MSS.timestamp_data" Destination="CYCLE_TIME_2.TM" dx1="866.67"/>
+			<Connection Source="I_MSS.SELECTEDMACHINESPEED" Destination="F_UINT_TO_REAL_2.IN" dx1="766.67"/>
+			<Connection Source="F_MOVE_3.OUT" Destination="E_PERMIT_5.PERMIT" dx1="2940">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="INTEGRAL.OUT" Destination="F_REAL_TO_UDINT.IN" dx1="260"/>
+			<Connection Source="INTEGRAL_2.OUT" Destination="F_REAL_TO_UDINT_1.IN" dx1="460"/>
+			<Connection Source="F_REAL_TO_UDINT_1.OUT" Destination="F_SEL_E_Distance.IN4" dx1="246.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="INTEGRAL_1.OUT" Destination="F_REAL_TO_UDINT_2.IN" dx1="253.33"/>
+			<Connection Source="F_REAL_TO_UDINT_2.OUT" Destination="F_SEL_E_Distance_2.IN2" dx1="1826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_E_Distance_2.OUT" Destination="UDINT2UDINT_Distance.IN" dx1="5346.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_Speed.OUT" Destination="Speed" dx1="2453.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_Direction.OUT" Destination="Direction" dx1="1093.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="UDINT2UDINT_Distance.OUT" Destination="Distance" dx1="1013.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_E_Speed_2.OUT" Destination="UDINT2UDINT_Speed.IN" dx1="5333.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_E_Direction_2.OUT" Destination="UDINT2UDINT_Direction.IN" dx1="5386.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_T_FF_SR.Q" Destination="VDS_Selected.VALUE" dx1="740"/>
+			<Connection Source="E_T_FF_SR_1.Q" Destination="WBSD_Selected.VALUE" dx1="740"/>
+			<Connection Source="E_T_FF_SR_2.Q" Destination="GBSD_Selected.VALUE" dx1="740"/>
+			<Connection Source="GBSD_Selected.VALUEO" Destination="F_MOVE_2.IN" dx1="253.33"/>
+			<Connection Source="MSS_Selected.VALUEO" Destination="F_MOVE_3.IN" dx1="253.33"/>
+			<Connection Source="E_T_FF_SR_3.Q" Destination="MSS_Selected.VALUE" dx1="740"/>
+			<Connection Source="E_T_FF_SR_4.Q" Destination="NMEA_Selected.VALUE" dx1="593.33"/>
+			<Connection Source="NMEA_Selected.VALUEO" Destination="F_MOVE_4.IN" dx1="253.33"/>
+			<Connection Source="F_REAL_TO_UDINT.OUT" Destination="F_SEL_E_Distance.IN1" dx1="1013.33"/>
+			<Connection Source="UDINT2UDINT.OUT" Destination="F_SEL_E_Distance_2.IN1" dx1="1220"/>
+			<Connection Source="VDS_Selected.VALUEO" Destination="F_MOVE.IN" dx1="360"/>
+			<Connection Source="F_MOVE.OUT" Destination="E_PERMIT.PERMIT" dx1="2460">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE.OUT" Destination="F_SEL.G" dx1="8406.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="WBSD_Selected.VALUEO" Destination="F_MOVE_1.IN" dx1="306.67"/>
+			<Connection Source="F_MOVE_1.OUT" Destination="I_WBSD.QI" dx1="560">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE.OUT" Destination="I_VDS.QI" dx1="560">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_1.OUT" Destination="E_PERMIT_1.PERMIT" dx1="1360">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_1.OUT" Destination="F_SEL_1.G" dx1="8513.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MUL.OUT" Destination="F_MOVE_5.IN"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

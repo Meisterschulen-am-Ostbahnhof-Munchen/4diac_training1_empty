@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<JetView-Document Version="0" ObjectPoolVersion="3.0" ProductVersion="5.7.2.6664">
+<JetView-Document Version="1" ObjectPoolVersion="3.0" ProductVersion="5.7.1.6514">
 	<PropertySheets>
 		<PropertySheet Name="General">
 			<Property Name="ObjectID">
@@ -117,10 +117,10 @@
 				<Value>8421504</Value>
 			</Property>
 			<Property Name="MagnificationX">
-				<Value>100</Value>
+				<Value>150</Value>
 			</Property>
 			<Property Name="MagnificationY">
-				<Value>100</Value>
+				<Value>150</Value>
 			</Property>
 		</PropertySheet>
 	</PropertySheets>
@@ -152,6 +152,325 @@
 			</PropertySheets>
 			<Objects>
 				<Object JVS-ID="5000"/>
+			</Objects>
+		</Component>
+		<Component ID="159746832" Class="CSoftKey" Name="SoftKey">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>1</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>80</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>560</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(560.0000000000000000)(0.0000000000000000)(1.0000000000000000)(80.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>1</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="5001"/>
+			</Objects>
+		</Component>
+		<Component ID="33679872" Class="CSoftKey" Name="SoftKey">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>2</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>160</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>560</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(560.0000000000000000)(0.0000000000000000)(1.0000000000000000)(160.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>2</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="5003"/>
+			</Objects>
+		</Component>
+		<Component ID="367741220" Class="CSoftKey" Name="SoftKey">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>3</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>240</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>560</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(560.0000000000000000)(0.0000000000000000)(1.0000000000000000)(240.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>3</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="5004"/>
+			</Objects>
+		</Component>
+		<Component ID="202386144" Class="CSoftKey" Name="SoftKey">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>4</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>320</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>560</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(560.0000000000000000)(0.0000000000000000)(1.0000000000000000)(320.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>4</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="5005"/>
+			</Objects>
+		</Component>
+		<Component ID="120569416" Class="CSoftKey" Name="SoftKey">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>5</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>400</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>560</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(560.0000000000000000)(0.0000000000000000)(1.0000000000000000)(400.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>5</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="5002"/>
+			</Objects>
+		</Component>
+		<Component ID="240171041" Class="CPointer" Name="Pointer">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>6</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>0</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>480</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(480.0000000000000000)(0.0000000000000000)(1.0000000000000000)(0.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>6</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="27000"/>
+			</Objects>
+		</Component>
+		<Component ID="60033848" Class="CPointer" Name="Pointer">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>7</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>80</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>480</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(480.0000000000000000)(0.0000000000000000)(1.0000000000000000)(80.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>7</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="27000"/>
+			</Objects>
+		</Component>
+		<Component ID="12686806" Class="CPointer" Name="Pointer">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>8</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>160</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>480</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(480.0000000000000000)(0.0000000000000000)(1.0000000000000000)(160.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>8</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="27000"/>
+			</Objects>
+		</Component>
+		<Component ID="748470496" Class="CPointer" Name="Pointer">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>9</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>240</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>480</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(480.0000000000000000)(0.0000000000000000)(1.0000000000000000)(240.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>9</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="27000"/>
+			</Objects>
+		</Component>
+		<Component ID="21460100" Class="CPointer" Name="Pointer">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>10</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>320</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>480</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(480.0000000000000000)(0.0000000000000000)(1.0000000000000000)(320.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>10</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="27000"/>
+			</Objects>
+		</Component>
+		<Component ID="304554786" Class="CPointer" Name="Pointer">
+			<PropertySheets>
+				<PropertySheet Name="General">
+					<Property Name="ZOrder">
+						<Value>11</Value>
+					</Property>
+				</PropertySheet>
+				<PropertySheet Name="Proxy">
+					<Property Name="Top">
+						<Value>400</Value>
+					</Property>
+					<Property Name="Left">
+						<Value>480</Value>
+					</Property>
+					<Property Name="Transform">
+						<Value>(1.0000000000000000)(0.0000000000000000)(480.0000000000000000)(0.0000000000000000)(1.0000000000000000)(400.0000000000000000)</Value>
+					</Property>
+					<Property Name="ReferencedObjectForMask">
+						<Value>-1</Value>
+					</Property>
+					<Property Name="SoftkeymaskDesignatorNo">
+						<Value>11</Value>
+					</Property>
+				</PropertySheet>
+			</PropertySheets>
+			<Objects>
+				<Object JVS-ID="27000"/>
 			</Objects>
 		</Component>
 	</Components>

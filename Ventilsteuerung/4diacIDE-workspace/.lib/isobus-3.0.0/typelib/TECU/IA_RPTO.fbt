@@ -50,4 +50,5 @@
 			<Connection Source="I_CORE.Q_timeout" Destination="TIMEOUT.D1" dx1="200"/>
 		</DataConnections>
 	</FBNetwork>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </FBType>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System Name="test">
+	<VersionInfo Version="1.0" Author="Grafinger" Date="2026-08-26">
+	</VersionInfo>
+	<CompilerInfo>
+	</CompilerInfo>
+	<Application Name="testApp">
+		<SubAppNetwork>
+			<SubApp Name="Baumsetzer" Type="FBs::Baumsetzer::Baumsetzer" x="1500" y="0">
+			</SubApp>
+		</SubAppNetwork>
+	</Application>
+	<Device Name="FORTE_PC" Type="iec61499::system::FORTE_PC" x="5200" y="713.33">
+		<Parameter Name="MGR_ID" Value="&quot;192.168.4.1:61499&quot;" Comment="Device manager socket ID"/>
+		<Attribute Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+		<Attribute Name="Color" Type="STRING" Value="255,190,111"/>
+		<Resource Name="EMB_RES" Type="iec61499::system::EMB_RES" x="0" y="0">
+			<FBNetwork>
+				<FB Name="E_TRIG" Type="iec61499::events::E_TRIG" x="1300" y="0">
+					<Parameter Name="EVENTTYPE" Value="'EInit'"/>
+				</FB>
+				<EventConnections>
+					<Connection Source="START.COLD" Destination="E_TRIG.REQ"/>
+				</EventConnections>
+			</FBNetwork>
+		</Resource>
+	</Device>
+	<Segment Name="Ethernet" Type="iec61499::system::Ethernet" x="6800" y="800" dx1="2000">
+		<Attribute Name="Color" Type="STRING" Value="219,84,189"/>
+	</Segment>
+	<Mapping From="testApp.Baumsetzer" To="FORTE_PC.EMB_RES"/>
+	<Link SegmentName="Ethernet" CommResource="FORTE_PC" Comment="">
+	</Link>
+</System>

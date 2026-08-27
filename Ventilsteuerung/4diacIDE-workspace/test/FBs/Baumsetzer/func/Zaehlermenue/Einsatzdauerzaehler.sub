@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Einsatzdauerzaehler" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Elias" Date="2024-04-17">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::SlurryTanker::func::Zaehlermenue">
+		<Import declaration="NVS_Keys::Key_Einsatzdauer_Minuten_Store"/>
+		<Import declaration="NVS_Keys::Key_Einsatzdauer_Stunden_Store"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="VT_Active" Type="Event">
+			</SubAppEvent>
+			<SubAppEvent Name="CountUp" Type="Event" Comment="Counts every event">
+			</SubAppEvent>
+			<SubAppEvent Name="Reset" Type="Event" Comment="Resets the counter">
+			</SubAppEvent>
+		</SubAppEventInputs>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<SubApp Name="Zaehler_Einsatzdauer" Type="Zaehler_Einsatzdauer" x="-12900" y="0">
+			<Parameter Name="KEY_Std" Value="Key_Einsatzdauer_Stunden_Store"/>
+			<Parameter Name="KEY_Min" Value="Key_Einsatzdauer_Minuten_Store"/>
+			<Parameter Name="u16ObjId_Std" Value="DefaultPool::NumberVariable_Einsatzdauer_Stunden"/>
+			<Parameter Name="u16ObjId_Min" Value="DefaultPool::NumberVariable_Einsatzdauer_Minuten"/>
+		</SubApp>
+		<EventConnections>
+			<Connection Source="CountUp" Destination="Zaehler_Einsatzdauer.CU" dx1="2900"/>
+			<Connection Source="Reset" Destination="Zaehler_Einsatzdauer.R" dx1="5621.74"/>
+			<Connection Source="VT_Active" Destination="Zaehler_Einsatzdauer.rVT" dx1="2691.3"/>
+		</EventConnections>
+	</SubAppNetwork>
+</SubAppType>

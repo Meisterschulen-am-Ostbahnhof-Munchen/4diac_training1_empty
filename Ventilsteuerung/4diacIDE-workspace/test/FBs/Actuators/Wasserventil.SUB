@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Wasserventil" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Elias" Date="2024-04-23">
+	</VersionInfo>
+	<CompilerInfo>
+		<Import declaration="DataPanel::io::MI::DQ::DataPanel_MI_DO::DigitalOutput_5A"/>
+		<Import declaration="DataPanel::io::MI::const::MI::MI_00"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="REQ" Type="Event">
+			</SubAppEvent>
+		</SubAppEventInputs>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="CNF" Type="Event">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+		<InputVars>
+			<VarDeclaration Name="OUT" Type="BOOL"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="QO" Type="BOOL"/>
+			<VarDeclaration Name="STATUS" Type="STRING"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="Wasserventil" Type="DataPanel::io::MI::DQ::DataPanel_MI_QX" x="521.74" y="-695.65">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="PARAMS" Value="''"/>
+			<Parameter Name="u8SAMember" Value="MI_00"/>
+			<Parameter Name="Output" Value="DigitalOutput_5A"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="REQ" Destination="Wasserventil.REQ" dx1="913.04"/>
+			<Connection Source="Wasserventil.CNF" Destination="CNF" dx1="769.57"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="OUT" Destination="Wasserventil.OUT" dx1="913.04"/>
+			<Connection Source="Wasserventil.QO" Destination="QO" dx1="769.57"/>
+			<Connection Source="Wasserventil.STATUS" Destination="STATUS" dx1="769.57"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Einstellungen" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Elias" Date="2024-04-23">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::Baumsetzer::func::Einstellungen">
+		<Import declaration="NVS_Keys::Key_Granulat_Dauer_Store"/>
+		<Import declaration="NVS_Keys::Key_Granulatversatz_Store"/>
+		<Import declaration="NVS_Keys::Key_Luft_Dauer_Store"/>
+		<Import declaration="NVS_Keys::Key_Luftversatz_Store"/>
+		<Import declaration="NVS_Keys::Key_Pflanzabstand_Store"/>
+		<Import declaration="NVS_Keys::Key_Summer_Dauer_Store"/>
+		<Import declaration="NVS_Keys::Key_Wasser_Dauer_Store"/>
+		<Import declaration="NVS_Keys::Key_Wasserversatz_Store"/>
+		<Import declaration="isobus::UT::io::Softkey::SoftKeyActivationCode::SK_RELEASED"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::SoftKey_Einstellungen"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<OutputVars>
+			<VarDeclaration Name="PflanzenAbstand" Type="UDINT" Comment="Pflanzabstand" InitialValue="12345"/>
+			<VarDeclaration Name="SummerDauer" Type="TIME"/>
+			<VarDeclaration Name="GranulatVersatz" Type="UDINT" InitialValue="12345"/>
+			<VarDeclaration Name="GranulatDauer" Type="TIME"/>
+			<VarDeclaration Name="LuftVersatz" Type="UDINT" InitialValue="12345"/>
+			<VarDeclaration Name="LuftDauer" Type="TIME"/>
+			<VarDeclaration Name="WasserVersatz" Type="UDINT" InitialValue="12345"/>
+			<VarDeclaration Name="WasserDauer" Type="TIME"/>
+		</OutputVars>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="InputNumber_Pflanzabstand" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="980" y="1260">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Pflanzabstand"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_PflanzenAbstand"/>
+		</FB>
+		<FB Name="Q_NumericValue_Pflanzabstand" Type="isobus::UT::Q::Q_NumericValue" x="10073.91" y="1465.22">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Pflanzabstand"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_PflanzenAbstand"/>
+		</FB>
+		<Group Name="Reg_PflanzenAbstand" Comment="Einstellungen Pflanzabstand, per InputNumber" x="-3478.26" y="-3565.22" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="NVS_Pflanzabstand" Type="logiBUS::storage::esp32_nvs::NVS" x="5073.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Pflanzabstand_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_PflanzenAbstand"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Pflanzabstand" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2873.91" y="1665.22">
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_PflanzenAbstand"/>
+		</FB>
+		<FB Name="InputNumber_Luftversatz" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="973.91" y="1282.61">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Luftversatz"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Luftversatz"/>
+		</FB>
+		<FB Name="Q_NumericValue_Luftversatz" Type="isobus::UT::Q::Q_NumericValue" x="9473.91" y="1482.61">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Luftversatz"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Luftversatz"/>
+		</FB>
+		<FB Name="NVS_Luftversatz" Type="logiBUS::storage::esp32_nvs::NVS" x="5173.91" y="1282.61">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Luftversatz_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Luftversatz"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Luftversatz" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2773.91" y="1682.61">
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Luftversatz"/>
+		</FB>
+		<Group Name="Reg_Luftversatz" Comment="Einstellungen Pflanzabstand, per InputNumber" x="-3478.26" y="-82.61" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="InputNumber_Wasserversatz" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="1073.91" y="1313.04">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Wasserversatz"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Wasserversatz"/>
+		</FB>
+		<FB Name="Q_NumericValue_Wasserversatz" Type="isobus::UT::Q::Q_NumericValue" x="9447.82" y="1413.04">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Wasserversatz"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Wasserversatz"/>
+		</FB>
+		<FB Name="NVS_Wasserversatz" Type="logiBUS::storage::esp32_nvs::NVS" x="5073.91" y="1313.04">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Wasserversatz_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Wasserversatz"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Wasserversatz" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2873.91" y="1713.04">
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Wasserversatz"/>
+		</FB>
+		<Group Name="Reg_Wasserversatz" Comment="Einstellungen Pflanzabstand, per InputNumber" x="-3478.26" y="3391.3" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="InputNumber_Granulatversatz" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="973.91" y="1339.13">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Granulatversatz"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Granulatversatz"/>
+		</FB>
+		<FB Name="Q_NumericValue_Granulatversatz" Type="isobus::UT::Q::Q_NumericValue" x="9473.91" y="1539.13">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Granulatversatz"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Granulatversatz"/>
+		</FB>
+		<FB Name="NVS_Granulatversatz" Type="logiBUS::storage::esp32_nvs::NVS" x="5073.91" y="1339.13">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Granulatversatz_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Granulatversatz"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Granulatversatz" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2773.91" y="1739.13">
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Granulatversatz"/>
+		</FB>
+		<Group Name="Reg_Granulatversatz" Comment="Einstellungen Pflanzabstand, per InputNumber" x="-3500" y="6800" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="InputNumber_Summer_Dauer" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="973.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Summer_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Summer_Dauer"/>
+		</FB>
+		<FB Name="Q_NumericValue_Summer_Dauer" Type="isobus::UT::Q::Q_NumericValue" x="10073.91" y="1465.22">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Summer_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Summer_Dauer"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Summer_Dauer" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2873.91" y="1665.22">
+			<Attribute Name="GroupName" Type="STRING" Value="Summer_Dauer"/>
+		</FB>
+		<FB Name="NVS_Summer_Dauer" Type="logiBUS::storage::esp32_nvs::NVS" x="5073.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Summer_Dauer_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Summer_Dauer"/>
+		</FB>
+		<Group Name="Summer_Dauer" Comment="Einstellungen Pflanzabstand, per InputNumber" x="10000" y="-3500" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="InputNumber_Granulat_Dauer" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="973.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Granulat_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Granulat_Dauer"/>
+		</FB>
+		<FB Name="Q_NumericValue_Granulat_Dauer" Type="isobus::UT::Q::Q_NumericValue" x="10073.91" y="1465.22">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Granulat_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Granulat_Dauer"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Granulat_Dauer" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2873.91" y="1665.22">
+			<Attribute Name="GroupName" Type="STRING" Value="Granulat_Dauer"/>
+		</FB>
+		<FB Name="NVS_Granulat_Dauer" Type="logiBUS::storage::esp32_nvs::NVS" x="5073.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Granulat_Dauer_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Granulat_Dauer"/>
+		</FB>
+		<Group Name="Granulat_Dauer" Comment="Einstellungen Pflanzabstand, per InputNumber" x="10000" y="-100" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="InputNumber_Luft_Dauer" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="973.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Luft_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Luft_Dauer"/>
+		</FB>
+		<FB Name="Q_NumericValue_Luft_Dauer" Type="isobus::UT::Q::Q_NumericValue" x="10073.91" y="1465.22">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Luft_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Luft_Dauer"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Luft_Dauer" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2873.91" y="1665.22">
+			<Attribute Name="GroupName" Type="STRING" Value="Luft_Dauer"/>
+		</FB>
+		<FB Name="NVS_Luft_Dauer" Type="logiBUS::storage::esp32_nvs::NVS" x="5073.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Luft_Dauer_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Luft_Dauer"/>
+		</FB>
+		<Group Name="Luft_Dauer" Comment="Einstellungen Pflanzabstand, per InputNumber" x="10000" y="3400" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="InputNumber_Wasser_Dauer" Type="isobus::UT::io::NumericValue::NumericValue_ID" x="973.91" y="1265.22">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Wasser_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Wasser_Dauer"/>
+		</FB>
+		<FB Name="Q_NumericValue_Wasser_Dauer" Type="isobus::UT::Q::Q_NumericValue" x="10000" y="1500">
+			<Parameter Name="u16ObjId" Value="DefaultPool::InputNumber_Wasser_Dauer"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Wasser_Dauer"/>
+		</FB>
+		<FB Name="F_DWORD_TO_UDINT_Wasser_Dauer" Type="iec61131::conversion::F_DWORD_TO_UDINT" x="2873.91" y="1665.22">
+			<Attribute Name="GroupName" Type="STRING" Value="Wasser_Dauer"/>
+		</FB>
+		<FB Name="NVS_Wasser_Dauer" Type="logiBUS::storage::esp32_nvs::NVS" x="5100" y="1300">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="KEY" Value="Key_Wasser_Dauer_Store"/>
+			<Parameter Name="DEFAULT_VALUE" Value="UDINT#1000"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Wasser_Dauer"/>
+		</FB>
+		<Group Name="Wasser_Dauer" Comment="Einstellungen Pflanzabstand, per InputNumber" x="10000" y="6900" width="11973.91" height="3130.43" locked="false">
+		</Group>
+		<FB Name="SoftKey_F4" Type="isobus::UT::io::Softkey::Softkey_IE" x="-5826.09" y="-1656.52">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="SoftKey_Einstellungen"/>
+			<Parameter Name="InputEvent" Value="SK_RELEASED"/>
+		</FB>
+		<FB Name="F_MOVE" Type="iec61131::selection::F_MOVE" x="8060" y="260">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_PflanzenAbstand"/>
+		</FB>
+		<FB Name="F_MOVE_1" Type="iec61131::selection::F_MOVE" x="7086.67" y="300">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Summer_Dauer"/>
+		</FB>
+		<FB Name="F_MULTIME_3" Type="iec61131::arithmetic::F_MULTIME" x="9186.67" y="0">
+			<Parameter Name="IN1" Value="T#1ms"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Wasser_Dauer"/>
+		</FB>
+		<FB Name="F_MULTIME" Type="iec61131::arithmetic::F_MULTIME" x="8786.67" y="300">
+			<Parameter Name="IN1" Value="T#1ms"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Summer_Dauer"/>
+		</FB>
+		<FB Name="F_MOVE_6" Type="iec61131::selection::F_MOVE" x="7500" y="400">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Granulatversatz"/>
+		</FB>
+		<FB Name="F_MOVE_7" Type="iec61131::selection::F_MOVE" x="7986.67" y="200">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Luft_Dauer"/>
+		</FB>
+		<FB Name="F_MOVE_8" Type="iec61131::selection::F_MOVE" x="7300" y="400">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Granulat_Dauer"/>
+		</FB>
+		<FB Name="F_MULTIME_2" Type="iec61131::arithmetic::F_MULTIME" x="9786.67" y="300">
+			<Parameter Name="IN1" Value="T#1ms"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Luft_Dauer"/>
+		</FB>
+		<FB Name="F_MOVE_3" Type="iec61131::selection::F_MOVE" x="7673.33" y="213.33">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Wasserversatz"/>
+		</FB>
+		<FB Name="F_MULTIME_1" Type="iec61131::arithmetic::F_MULTIME" x="9000" y="400">
+			<Parameter Name="IN1" Value="T#1ms"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Granulat_Dauer"/>
+		</FB>
+		<FB Name="F_MOVE_5" Type="iec61131::selection::F_MOVE" x="7486.67" y="0">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Wasser_Dauer"/>
+		</FB>
+		<FB Name="F_MOVE_2" Type="iec61131::selection::F_MOVE" x="7573.33" y="380">
+			<Attribute Name="DataType" Value="UDINT"/>
+			<Attribute Name="GroupName" Type="STRING" Value="Reg_Luftversatz"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="NVS_Luftversatz.GETO" Destination="Q_NumericValue_Luftversatz.REQ" dx1="1804.35"/>
+			<Connection Source="NVS_Wasserversatz.GETO" Destination="Q_NumericValue_Wasserversatz.REQ" dx1="1800"/>
+			<Connection Source="NVS_Granulatversatz.INITO" Destination="Q_NumericValue_Granulatversatz.INIT" dx1="1804.35">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="NVS_Granulatversatz.GETO" Destination="Q_NumericValue_Granulatversatz.REQ" dx1="1804.35"/>
+			<Connection Source="F_DWORD_TO_UDINT_Luftversatz.CNF" Destination="NVS_Luftversatz.SET" dx1="630.43"/>
+			<Connection Source="F_DWORD_TO_UDINT_Wasserversatz.CNF" Destination="NVS_Wasserversatz.SET" dx1="634.78"/>
+			<Connection Source="F_DWORD_TO_UDINT_Granulatversatz.CNF" Destination="NVS_Granulatversatz.SET" dx1="639.13"/>
+			<Connection Source="InputNumber_Pflanzabstand.IND" Destination="F_DWORD_TO_UDINT_Pflanzabstand.REQ" dx1="582.61"/>
+			<Connection Source="InputNumber_Luftversatz.IND" Destination="F_DWORD_TO_UDINT_Luftversatz.REQ" dx1="530.43"/>
+			<Connection Source="InputNumber_Wasserversatz.IND" Destination="F_DWORD_TO_UDINT_Wasserversatz.REQ" dx1="578.26"/>
+			<Connection Source="InputNumber_Granulatversatz.IND" Destination="F_DWORD_TO_UDINT_Granulatversatz.REQ" dx1="530.43"/>
+			<Connection Source="F_DWORD_TO_UDINT_Pflanzabstand.CNF" Destination="NVS_Pflanzabstand.SET" dx1="586.96"/>
+			<Connection Source="NVS_Pflanzabstand.INITO" Destination="Q_NumericValue_Pflanzabstand.INIT" dx1="2678.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="NVS_Pflanzabstand.GETO" Destination="Q_NumericValue_Pflanzabstand.REQ" dx1="2173.91"/>
+			<Connection Source="F_DWORD_TO_UDINT_Summer_Dauer.CNF" Destination="NVS_Summer_Dauer.SET" dx1="586.96"/>
+			<Connection Source="NVS_Summer_Dauer.INITO" Destination="Q_NumericValue_Summer_Dauer.INIT" dx1="2678.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="InputNumber_Summer_Dauer.IND" Destination="F_DWORD_TO_UDINT_Summer_Dauer.REQ" dx1="582.61"/>
+			<Connection Source="NVS_Summer_Dauer.GETO" Destination="Q_NumericValue_Summer_Dauer.REQ" dx1="2173.91"/>
+			<Connection Source="NVS_Granulat_Dauer.GETO" Destination="Q_NumericValue_Granulat_Dauer.REQ" dx1="2173.91"/>
+			<Connection Source="NVS_Granulat_Dauer.INITO" Destination="Q_NumericValue_Granulat_Dauer.INIT" dx1="2678.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="InputNumber_Granulat_Dauer.IND" Destination="F_DWORD_TO_UDINT_Granulat_Dauer.REQ" dx1="582.61"/>
+			<Connection Source="F_DWORD_TO_UDINT_Granulat_Dauer.CNF" Destination="NVS_Granulat_Dauer.SET" dx1="586.96"/>
+			<Connection Source="NVS_Luft_Dauer.GETO" Destination="Q_NumericValue_Luft_Dauer.REQ" dx1="2173.91"/>
+			<Connection Source="NVS_Luft_Dauer.INITO" Destination="Q_NumericValue_Luft_Dauer.INIT" dx1="2678.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="InputNumber_Luft_Dauer.IND" Destination="F_DWORD_TO_UDINT_Luft_Dauer.REQ" dx1="582.61"/>
+			<Connection Source="F_DWORD_TO_UDINT_Luft_Dauer.CNF" Destination="NVS_Luft_Dauer.SET" dx1="586.96"/>
+			<Connection Source="NVS_Wasser_Dauer.GETO" Destination="Q_NumericValue_Wasser_Dauer.REQ" dx1="2173.91"/>
+			<Connection Source="NVS_Wasser_Dauer.INITO" Destination="Q_NumericValue_Wasser_Dauer.INIT" dx1="2678.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="InputNumber_Wasser_Dauer.IND" Destination="F_DWORD_TO_UDINT_Wasser_Dauer.REQ" dx1="582.61"/>
+			<Connection Source="F_DWORD_TO_UDINT_Wasser_Dauer.CNF" Destination="NVS_Wasser_Dauer.SET" dx1="586.96"/>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Pflanzabstand.REQ" dx1="5860.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Luftversatz.REQ" dx1="5621.74">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Wasserversatz.REQ" dx1="5626.09">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Granulatversatz.REQ" dx1="5652.17">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Wasser_Dauer.REQ" dx1="12669.57">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Summer_Dauer.REQ" dx1="12669.57">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Granulat_Dauer.REQ" dx1="12695.65">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F4.IND" Destination="Q_NumericValue_Luft_Dauer.REQ" dx1="12647.83">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="NVS_Summer_Dauer.INITO" Destination="NVS_Summer_Dauer.GET" dx1="80" dx2="80" dy="-253.33"/>
+			<Connection Source="NVS_Granulat_Dauer.INITO" Destination="NVS_Granulat_Dauer.GET" dx1="80" dx2="80" dy="-193.33"/>
+			<Connection Source="NVS_Luft_Dauer.INITO" Destination="NVS_Luft_Dauer.GET" dx1="80" dx2="80" dy="-200"/>
+			<Connection Source="NVS_Wasser_Dauer.INITO" Destination="NVS_Wasser_Dauer.GET" dx1="80" dx2="80" dy="-233.33"/>
+			<Connection Source="NVS_Granulatversatz.INITO" Destination="NVS_Granulatversatz.GET" dx1="80" dx2="80" dy="-220"/>
+			<Connection Source="NVS_Wasserversatz.INITO" Destination="NVS_Wasserversatz.GET" dx1="80" dx2="80" dy="-173.33"/>
+			<Connection Source="NVS_Luftversatz.INITO" Destination="NVS_Luftversatz.GET" dx1="80" dx2="80" dy="-173.33"/>
+			<Connection Source="NVS_Pflanzabstand.INITO" Destination="NVS_Pflanzabstand.GET" dx1="80" dx2="80" dy="-180"/>
+			<Connection Source="F_MOVE_8.CNF" Destination="F_MULTIME_1.REQ"/>
+			<Connection Source="F_MOVE_5.CNF" Destination="F_MULTIME_3.REQ"/>
+			<Connection Source="F_MOVE_1.CNF" Destination="F_MULTIME.REQ"/>
+			<Connection Source="F_MOVE_7.CNF" Destination="F_MULTIME_2.REQ" dx1="620"/>
+			<Connection Source="NVS_Pflanzabstand.SETO" Destination="F_MOVE.REQ" dx1="986.67"/>
+			<Connection Source="NVS_Pflanzabstand.GETO" Destination="F_MOVE.REQ" dx1="986.67"/>
+			<Connection Source="NVS_Luftversatz.SETO" Destination="F_MOVE_2.REQ" dx1="686.67"/>
+			<Connection Source="NVS_Luftversatz.GETO" Destination="F_MOVE_2.REQ" dx1="686.67"/>
+			<Connection Source="NVS_Wasserversatz.SETO" Destination="F_MOVE_3.REQ" dx1="786.67"/>
+			<Connection Source="NVS_Wasserversatz.GETO" Destination="F_MOVE_3.REQ" dx1="786.67"/>
+			<Connection Source="NVS_Granulatversatz.SETO" Destination="F_MOVE_6.REQ" dx1="700"/>
+			<Connection Source="NVS_Granulatversatz.GETO" Destination="F_MOVE_6.REQ" dx1="700"/>
+			<Connection Source="NVS_Wasser_Dauer.SETO" Destination="F_MOVE_5.REQ" dx1="673.33"/>
+			<Connection Source="NVS_Wasser_Dauer.GETO" Destination="F_MOVE_5.REQ" dx1="673.33"/>
+			<Connection Source="NVS_Luft_Dauer.SETO" Destination="F_MOVE_7.REQ" dx1="940"/>
+			<Connection Source="NVS_Luft_Dauer.GETO" Destination="F_MOVE_7.REQ" dx1="940"/>
+			<Connection Source="NVS_Granulat_Dauer.SETO" Destination="F_MOVE_8.REQ" dx1="600"/>
+			<Connection Source="NVS_Granulat_Dauer.GETO" Destination="F_MOVE_8.REQ" dx1="600"/>
+			<Connection Source="NVS_Summer_Dauer.SETO" Destination="F_MOVE_1.REQ" dx1="493.33"/>
+			<Connection Source="NVS_Summer_Dauer.GETO" Destination="F_MOVE_1.REQ" dx1="493.33"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="NVS_Luftversatz.VALUEO" Destination="Q_NumericValue_Luftversatz.u32NewValue" dx1="1678.26"/>
+			<Connection Source="NVS_Wasserversatz.VALUEO" Destination="Q_NumericValue_Wasserversatz.u32NewValue" dx1="1752.17"/>
+			<Connection Source="NVS_Granulatversatz.VALUEO" Destination="Q_NumericValue_Granulatversatz.u32NewValue" dx1="1778.26"/>
+			<Connection Source="F_DWORD_TO_UDINT_Luftversatz.OUT" Destination="NVS_Luftversatz.VALUE" dx1="626.09"/>
+			<Connection Source="F_DWORD_TO_UDINT_Wasserversatz.OUT" Destination="NVS_Wasserversatz.VALUE" dx1="504.35"/>
+			<Connection Source="F_DWORD_TO_UDINT_Granulatversatz.OUT" Destination="NVS_Granulatversatz.VALUE" dx1="530.43"/>
+			<Connection Source="InputNumber_Pflanzabstand.IN" Destination="F_DWORD_TO_UDINT_Pflanzabstand.IN" dx1="582.61"/>
+			<Connection Source="InputNumber_Luftversatz.IN" Destination="F_DWORD_TO_UDINT_Luftversatz.IN" dx1="556.52"/>
+			<Connection Source="InputNumber_Wasserversatz.IN" Destination="F_DWORD_TO_UDINT_Wasserversatz.IN" dx1="556.52"/>
+			<Connection Source="InputNumber_Granulatversatz.IN" Destination="F_DWORD_TO_UDINT_Granulatversatz.IN" dx1="556.52"/>
+			<Connection Source="F_DWORD_TO_UDINT_Pflanzabstand.OUT" Destination="NVS_Pflanzabstand.VALUE" dx1="504.35"/>
+			<Connection Source="NVS_Pflanzabstand.VALUEO" Destination="Q_NumericValue_Pflanzabstand.u32NewValue" dx1="2052.17"/>
+			<Connection Source="NVS_Summer_Dauer.VALUEO" Destination="Q_NumericValue_Summer_Dauer.u32NewValue" dx1="2043.48"/>
+			<Connection Source="InputNumber_Summer_Dauer.IN" Destination="F_DWORD_TO_UDINT_Summer_Dauer.IN" dx1="608.7"/>
+			<Connection Source="F_DWORD_TO_UDINT_Summer_Dauer.OUT" Destination="NVS_Summer_Dauer.VALUE" dx1="517.39"/>
+			<Connection Source="F_DWORD_TO_UDINT_Granulat_Dauer.OUT" Destination="NVS_Granulat_Dauer.VALUE" dx1="491.3"/>
+			<Connection Source="InputNumber_Granulat_Dauer.IN" Destination="F_DWORD_TO_UDINT_Granulat_Dauer.IN" dx1="608.7"/>
+			<Connection Source="NVS_Granulat_Dauer.VALUEO" Destination="Q_NumericValue_Granulat_Dauer.u32NewValue" dx1="2065.22"/>
+			<Connection Source="F_DWORD_TO_UDINT_Luft_Dauer.OUT" Destination="NVS_Luft_Dauer.VALUE" dx1="539.13"/>
+			<Connection Source="InputNumber_Luft_Dauer.IN" Destination="F_DWORD_TO_UDINT_Luft_Dauer.IN" dx1="608.7"/>
+			<Connection Source="NVS_Luft_Dauer.VALUEO" Destination="Q_NumericValue_Luft_Dauer.u32NewValue" dx1="2017.39"/>
+			<Connection Source="F_DWORD_TO_UDINT_Wasser_Dauer.OUT" Destination="NVS_Wasser_Dauer.VALUE" dx1="517.39"/>
+			<Connection Source="InputNumber_Wasser_Dauer.IN" Destination="F_DWORD_TO_UDINT_Wasser_Dauer.IN" dx1="608.7"/>
+			<Connection Source="NVS_Wasser_Dauer.VALUEO" Destination="Q_NumericValue_Wasser_Dauer.u32NewValue" dx1="1980"/>
+			<Connection Source="F_MOVE_5.OUT" Destination="F_MULTIME_3.IN2" dx1="613.04"/>
+			<Connection Source="F_MOVE_8.OUT" Destination="F_MULTIME_1.IN2" dx1="566.67"/>
+			<Connection Source="F_MOVE_7.OUT" Destination="F_MULTIME_2.IN2" dx1="604.35"/>
+			<Connection Source="F_MOVE_1.OUT" Destination="F_MULTIME.IN2" dx1="634.78"/>
+			<Connection Source="F_MOVE.OUT" Destination="PflanzenAbstand" dx1="3086.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="NVS_Pflanzabstand.VALUEO" Destination="F_MOVE.IN" dx1="1593.33"/>
+			<Connection Source="F_MULTIME.OUT" Destination="SummerDauer" dx1="2166.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_6.OUT" Destination="GranulatVersatz" dx1="3086.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MULTIME_1.OUT" Destination="GranulatDauer" dx1="2166.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_2.OUT" Destination="LuftVersatz" dx1="3086.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MULTIME_2.OUT" Destination="LuftDauer" dx1="2166.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MOVE_3.OUT" Destination="WasserVersatz" dx1="3086.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_MULTIME_3.OUT" Destination="WasserDauer" dx1="2166.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="NVS_Granulatversatz.VALUEO" Destination="F_MOVE_6.IN" dx1="913.33"/>
+			<Connection Source="NVS_Wasserversatz.VALUEO" Destination="F_MOVE_3.IN" dx1="1080"/>
+			<Connection Source="NVS_Luftversatz.VALUEO" Destination="F_MOVE_2.IN" dx1="900"/>
+			<Connection Source="NVS_Wasser_Dauer.VALUEO" Destination="F_MOVE_5.IN" dx1="1280"/>
+			<Connection Source="NVS_Luft_Dauer.VALUEO" Destination="F_MOVE_7.IN" dx1="1180"/>
+			<Connection Source="NVS_Granulat_Dauer.VALUEO" Destination="F_MOVE_8.IN" dx1="966.67"/>
+			<Connection Source="NVS_Summer_Dauer.VALUEO" Destination="F_MOVE_1.IN" dx1="773.33"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

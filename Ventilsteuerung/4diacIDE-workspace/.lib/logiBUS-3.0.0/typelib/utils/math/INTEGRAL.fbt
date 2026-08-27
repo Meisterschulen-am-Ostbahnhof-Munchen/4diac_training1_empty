@@ -5,7 +5,6 @@
 	<VersionInfo Organization="HR Agrartechnik GmbH" Version="1.0" Author="Franz Höpfinger" Date="2024-10-18" Remarks="initial Version">
 	</VersionInfo>
 	<CompilerInfo packageName="logiBUS::utils::math">
-		<Import declaration="eclipse4diac::core::TypeHash"/>
 	</CompilerInfo>
 	<InterfaceList>
 		<EventInputs>
@@ -39,24 +38,20 @@
 			<ECAction Algorithm="RESET" Output="CNF"/>
 		</ECState>
 		<Algorithm Name="REQ">
-			<ST><![CDATA[ALGORITHM REQ
+			<ST><![CDATA[
 IF NOT OVERFLOW THEN
-	IF (1.0E38 - IN * DINT_TO_REAL(TM) < OUT OR -1.0E38 - IN * DINT_TO_REAL(TM)> OUT) THEN
+	IF (1.0E38 - IN * DINT_TO_REAL(TM) < OUT OR -1.0E38 - IN * DINT_TO_REAL(TM) > OUT) THEN
 		OVERFLOW := TRUE;
-	ELSIF (TM> 0) THEN    // Time Difference since last call must be positive.
+	ELSIF (TM > 0) THEN // Time Difference since last call must be positive.
 		OUT := OUT + IN * DINT_TO_REAL(TM) / 1000.0;
 	END_IF;
 END_IF;
-END_ALGORITHM]]></ST>
+]]></ST>
 		</Algorithm>
 		<Algorithm Name="RESET">
 			<ST><![CDATA[
-
-ALGORITHM RESET
 OUT := 0.0;
 OVERFLOW := FALSE;
-END_ALGORITHM
-
 ]]></ST>
 		</Algorithm>
 	</SimpleFB>

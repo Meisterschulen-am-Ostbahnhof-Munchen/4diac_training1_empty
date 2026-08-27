@@ -143,4 +143,5 @@ Y = piecewise linear interpolation between stored calibration points</pre>
 
 <p><strong>Output:</strong> Interpolated between MIN_REF=-100, MID_REF=0, MAX_REF=100 with clipping.</p>
 ]]></Attribute>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </FBType>

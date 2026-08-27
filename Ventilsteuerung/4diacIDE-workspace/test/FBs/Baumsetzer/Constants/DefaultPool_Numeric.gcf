@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalConstants Name="DefaultPool_Numeric" Comment="Numeric object pool constants (ID, Scale, Offset, Decimals)">
+	<CompilerInfo packageName="test::FBs::Baumsetzer::Constants"/>
+	<GlobalConstants>
+		<VarDeclaration Name="InputNumber_Pflanzabstand" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9001, r32Scale := 0.001, i32Offset := 0, u8Decimals := 3)"/>
+		<VarDeclaration Name="InputNumber_Luftversatz" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9002, r32Scale := 0.1, i32Offset := 0, u8Decimals := 1)"/>
+		<VarDeclaration Name="InputNumber_Wasserversatz" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9003, r32Scale := 0.1, i32Offset := 0, u8Decimals := 1)"/>
+		<VarDeclaration Name="InputNumber_Granulatversatz" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9004, r32Scale := 0.1, i32Offset := 0, u8Decimals := 1)"/>
+		<VarDeclaration Name="InputNumber_Summer_Dauer" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9005, r32Scale := 1.0, i32Offset := 0, u8Decimals := 0)"/>
+		<VarDeclaration Name="InputNumber_Luft_Dauer" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9006, r32Scale := 1.0, i32Offset := 0, u8Decimals := 0)"/>
+		<VarDeclaration Name="InputNumber_Wasser_Dauer" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9007, r32Scale := 1.0, i32Offset := 0, u8Decimals := 0)"/>
+		<VarDeclaration Name="InputNumber_Granulat_Dauer" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 9008, r32Scale := 1.0, i32Offset := 0, u8Decimals := 0)"/>
+		<VarDeclaration Name="OutputNumber_12000" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12000, r32Scale := 0.0036, i32Offset := 0, u8Decimals := 1)"/>
+		<VarDeclaration Name="Einsatzstunden" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12001, r32Scale := 1.0, i32Offset := 0, u8Decimals := 0)"/>
+		<VarDeclaration Name="Einsatzminuten" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12002, r32Scale := 1.0, i32Offset := 0, u8Decimals := 0)"/>
+		<VarDeclaration Name="OutputNumber_Baeume_gepflanzt" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12003, r32Scale := 1.0, i32Offset := 0, u8Decimals := 0)"/>
+		<VarDeclaration Name="OutputNumber_12004" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12004, r32Scale := 0.0036, i32Offset := 0, u8Decimals := 1)"/>
+		<VarDeclaration Name="OutputNumber_12005" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12005, r32Scale := 0.0036, i32Offset := 0, u8Decimals := 1)"/>
+		<VarDeclaration Name="OutputNumber_12006" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12006, r32Scale := 0.0036, i32Offset := 0, u8Decimals := 1)"/>
+		<VarDeclaration Name="OutputNumber_12007" Type="logiBUS::utils::conversion::phys::NumericObjectPool_S" InitialValue="(u16ObjId := 12007, r32Scale := 0.0036, i32Offset := 0, u8Decimals := 1)"/>
+	</GlobalConstants>
+</GlobalConstants>

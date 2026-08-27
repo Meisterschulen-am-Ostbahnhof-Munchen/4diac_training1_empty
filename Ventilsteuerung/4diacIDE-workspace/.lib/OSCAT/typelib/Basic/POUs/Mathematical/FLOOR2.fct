@@ -53,4 +53,5 @@ END_FUNCTION
  * *
  * hm	4. apr. 2008	rev 1.1 added type conversion to avoid warnings under codesys 3.0 *) ]]></ST>
 	</FunctionBody>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </Function>

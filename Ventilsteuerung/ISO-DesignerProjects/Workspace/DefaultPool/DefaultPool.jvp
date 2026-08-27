@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<JetView-Project ProductVersion="5.7.2.6664" PlatformID="15" Flags="0" StartPage=".\DataMask_M1.jvi" StartPageExtended="" NeedsWorkingSet="1" NeedsStartPage="1">
+<JetView-Project ProductVersion="5.7.2.6664" PlatformID="8" Flags="0" StartPage=".\DataMask_Main.jvi" StartPageExtended="" NeedsWorkingSet="1" NeedsStartPage="1">
   <Item NodeName="Languages" guid="108fa601-af33-40ee-b7dd-aa91435d0926" />
   <Item NodeName="Resources" guid="26674d0b-fe54-4bd1-a367-c82809591371">
     <Item Path=".\Devices_DefaultPool.jrc" guid="899cee93-7f61-478e-bee3-8dc136d03c09" Flags="0" ResourceNamespace="Devices_DefaultPool" ResourceFileType="Hardware Resource" />
   </Item>
   <Item NodeName="Visualisation" guid="567ecccd-a496-4b68-8bb7-cad6135d916f">
     <Item Path=".\WorkingSet_0.jvi" guid="4e910fb6-791e-4559-a12f-ed0d82cb2f16" Flags="0" />
-    <Item Path=".\DataMask_M1.jvi" guid="e4e34517-91f9-49ba-840f-84e9ee029367" Flags="0" />
     <Item Path=".\SoftKeyMask_S1.jvi" guid="0da60fde-c92c-4c67-865a-da8cbb15bbb4" Flags="0" />
+    <Item Path=".\DataMask_Main.jvi" guid="e86c88b1-1169-4198-bfee-89d31ea2ee59" Flags="0" />
+    <Item Path=".\DataMask_Einstellungen.jvi" guid="e5562b14-1d5d-4086-b17b-471832e655fa" Flags="0" />
+    <Item Path=".\DataMask_Manuel.jvi" guid="d695d80a-beae-4912-94e5-ae4a209aa371" Flags="0" />
+    <Item Path=".\DataMask_Geschwindigkeitssignale.jvi" guid="ac96e9cd-2c55-4f1d-a7fd-6123409882f4" Flags="0" />
   </Item>
 </JetView-Project>

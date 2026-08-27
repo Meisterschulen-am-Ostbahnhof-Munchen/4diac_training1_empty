@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Baumsetzer" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Elias" Date="2024-04-23">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::Baumsetzer">
+		<Import declaration="DataPanel::io::MI::DQ::DataPanel_MI_DO::DigitalOutput_6A"/>
+		<Import declaration="DataPanel::io::MI::const::MI::MI_00"/>
+		<Import declaration="isobus::UT::Q::const::colours::COLOR_GREEN"/>
+		<Import declaration="isobus::UT::Q::const::colours::COLOR_RED"/>
+		<Import declaration="isobus::UT::io::Button::ButtonActivationCode::BT_RELEASED_UNLATCHED"/>
+		<Import declaration="isobus::UT::io::Softkey::SoftKeyActivationCode::SK_RELEASED"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_Granulatschieber"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_Luftventil"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_Reset_Baeume_gepflanzt"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_Summer"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_Wasserpumpe"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Button_Wasserventil"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::SoftKey_Scheinwerfer"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Start"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool::Stop"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<SubApp Name="Luftventil" Type="Luftventil" x="8173.92" y="613.04">
+		</SubApp>
+		<SubApp Name="Summer" Type="Summer" x="8200" y="1700">
+		</SubApp>
+		<SubApp Name="Wasserpumpe" Type="Wasserpumpe" x="8260.87" y="2869.57">
+		</SubApp>
+		<SubApp Name="Wasserventil" Type="Wasserventil" x="8260.87" y="4004.34">
+		</SubApp>
+		<FB Name="OR_1" Type="iec61131::bitwiseOperators::OR_2" x="3308.69" y="-960.87">
+			<Parameter Name="IN1" Value="BOOL#FALSE"/>
+			<Parameter Name="IN2" Value="BOOL#FALSE"/>
+			<Parameter Name="OUT" Value="BOOL#FALSE">
+				<Attribute Name="Attribute1" Type="BOOL" Value=""/>
+			</Parameter>
+		</FB>
+		<SubApp Name="Start_Baumsetzer" Type="FBs::Baumsetzer::func::Automatik::Start_Baumsetzer" x="-2700" y="-800">
+		</SubApp>
+		<FB Name="SoftKey_F2" Type="isobus::UT::io::Softkey::Softkey_IE" x="-6352.17" y="-869.57">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Stop"/>
+			<Parameter Name="InputEvent" Value="SK_RELEASED"/>
+		</FB>
+		<FB Name="F_AND" Type="iec61131::bitwiseOperators::AND_2" x="6700" y="-500">
+			<Parameter Name="IN1" Value="BOOL#FALSE"/>
+			<Parameter Name="IN2" Value="BOOL#FALSE"/>
+		</FB>
+		<FB Name="F_AND_1" Type="iec61131::bitwiseOperators::AND_2" x="6695.66" y="695.65">
+		</FB>
+		<FB Name="OR_2" Type="iec61131::bitwiseOperators::OR_2" x="3308.7" y="169.57">
+			<Parameter Name="IN1" Value="BOOL#FALSE"/>
+			<Parameter Name="IN2" Value="BOOL#FALSE"/>
+			<Parameter Name="OUT" Value="BOOL#FALSE"/>
+		</FB>
+		<FB Name="F_AND_2" Type="iec61131::bitwiseOperators::AND_2" x="6700" y="1800">
+		</FB>
+		<FB Name="OR_3" Type="iec61131::bitwiseOperators::OR_2" x="3304.35" y="1308.7">
+			<Parameter Name="IN1" Value="BOOL#FALSE"/>
+			<Parameter Name="IN2" Value="BOOL#FALSE"/>
+			<Parameter Name="OUT" Value="BOOL#FALSE"/>
+		</FB>
+		<FB Name="F_AND_3" Type="iec61131::bitwiseOperators::AND_2" x="6691.31" y="2960.87">
+		</FB>
+		<FB Name="OR_4" Type="iec61131::bitwiseOperators::OR_2" x="3304.35" y="2434.78">
+			<Parameter Name="IN1" Value="BOOL#FALSE"/>
+			<Parameter Name="IN2" Value="BOOL#FALSE"/>
+			<Parameter Name="OUT" Value="BOOL#FALSE"/>
+		</FB>
+		<FB Name="OR_5" Type="iec61131::bitwiseOperators::OR_2" x="3304.35" y="3565.22">
+			<Parameter Name="IN1" Value="BOOL#FALSE"/>
+			<Parameter Name="IN2" Value="BOOL#FALSE"/>
+			<Parameter Name="OUT" Value="BOOL#FALSE"/>
+		</FB>
+		<FB Name="F_AND_4" Type="iec61131::bitwiseOperators::AND_2" x="6691.31" y="4091.31">
+		</FB>
+		<SubApp Name="Baumzaehler" Type="FBs::Baumsetzer::func::Zaehlermenue::Baumzaehler" x="12900" y="1600">
+		</SubApp>
+		<FB Name="E_SR" Type="iec61499::events::E_SR" x="-4434.78" y="-786.96">
+		</FB>
+		<SubApp Name="Granulatschieber" Type="Granulatschieber" x="8100" y="-600">
+		</SubApp>
+		<FB Name="E_SWITCH" Type="iec61499::events::E_SWITCH" x="9134.78" y="1652.18">
+		</FB>
+		<FB Name="Button_Granulatschieber" Type="isobus::UT::io::Button::Button_IE" x="-3500" y="3600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_Granulatschieber"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="Button_Luftventil" Type="isobus::UT::io::Button::Button_IE" x="-3400" y="4600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_Luftventil"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="Button_Summer" Type="isobus::UT::io::Button::Button_IE" x="-3400" y="5600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_Summer"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="Button_Wasserpumpe" Type="isobus::UT::io::Button::Button_IE" x="-3400" y="6600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_Wasserpumpe"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="Button_Wasserventil" Type="isobus::UT::io::Button::Button_IE" x="-3400" y="7600">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_Wasserventil"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="E_PULSE" Type="iec61499::events::timers::E_PULSE" x="-800" y="3700">
+			<Parameter Name="PT" Value="T#120s"/>
+		</FB>
+		<FB Name="E_PULSE_1" Type="iec61499::events::timers::E_PULSE" x="-800" y="4600">
+			<Parameter Name="PT" Value="T#120s"/>
+		</FB>
+		<FB Name="E_PULSE_2" Type="iec61499::events::timers::E_PULSE" x="-800" y="5600">
+			<Parameter Name="PT" Value="T#120s"/>
+		</FB>
+		<FB Name="E_PULSE_3" Type="iec61499::events::timers::E_PULSE" x="-800" y="6600">
+			<Parameter Name="PT" Value="T#120s"/>
+		</FB>
+		<FB Name="E_PULSE_4" Type="iec61499::events::timers::E_PULSE" x="-800" y="7600">
+			<Parameter Name="PT" Value="T#120s"/>
+		</FB>
+		<FB Name="E_PERMIT" Type="iec61499::events::E_PERMIT" x="10800" y="1300">
+		</FB>
+		<FB Name="Q_BackgroundColour" Type="isobus::UT::Q::Q_BackgroundColour" x="12900" y="400">
+			<Parameter Name="u16ObjId" Value="Button_Luftventil"/>
+		</FB>
+		<FB Name="F_SEL" Type="iec61131::selection::F_SEL" x="10300" y="500">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="F_SEL_1" Type="iec61131::selection::F_SEL" x="10300" y="-500">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_1" Type="isobus::UT::Q::Q_BackgroundColour" x="12900" y="-600">
+			<Parameter Name="u16ObjId" Value="Button_Granulatschieber"/>
+		</FB>
+		<FB Name="F_SEL_2" Type="iec61131::selection::F_SEL" x="14600" y="1600">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_2" Type="isobus::UT::Q::Q_BackgroundColour" x="17200" y="1500">
+			<Parameter Name="u16ObjId" Value="Button_Summer"/>
+		</FB>
+		<FB Name="F_SEL_3" Type="iec61131::selection::F_SEL" x="10600" y="2800">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_3" Type="isobus::UT::Q::Q_BackgroundColour" x="13200" y="2700">
+			<Parameter Name="u16ObjId" Value="Button_Wasserpumpe"/>
+		</FB>
+		<FB Name="F_SEL_4" Type="iec61131::selection::F_SEL" x="10600" y="3900">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_4" Type="isobus::UT::Q::Q_BackgroundColour" x="13200" y="3800">
+			<Parameter Name="u16ObjId" Value="Button_Wasserventil"/>
+		</FB>
+		<FB Name="SoftKey_F6" Type="isobus::UT::io::Softkey::Softkey_IX" x="6400" y="5400">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="PARAMS" Value="''"/>
+			<Parameter Name="u16ObjId" Value="SoftKey_Scheinwerfer"/>
+		</FB>
+		<FB Name="Scheinwerfer" Type="DataPanel::io::MI::DQ::DataPanel_MI_QX" x="9500" y="5500">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u8SAMember" Value="MI_00"/>
+			<Parameter Name="Output" Value="DigitalOutput_6A"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_5" Type="isobus::UT::Q::Q_BackgroundColour" x="-2100" y="1500">
+			<Parameter Name="u16ObjId" Value="Start"/>
+		</FB>
+		<FB Name="F_SEL_5" Type="iec61131::selection::F_SEL" x="-4000" y="1600">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="Q_BackgroundColour_6" Type="isobus::UT::Q::Q_BackgroundColour" x="-2100" y="2400">
+			<Parameter Name="u16ObjId" Value="Stop"/>
+		</FB>
+		<FB Name="F_SEL_6" Type="iec61131::selection::F_SEL" x="-4000" y="2500">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<FB Name="F_NOT" Type="iec61131::bitwiseOperators::F_NOT" x="-5400" y="2500">
+		</FB>
+		<FB Name="Button_Reset_Baeume_gepflanzt" Type="isobus::UT::io::Button::Button_IE" x="10600" y="1800">
+			<Parameter Name="QI" Value="TRUE"/>
+			<Parameter Name="u16ObjId" Value="Button_Reset_Baeume_gepflanzt"/>
+			<Parameter Name="InputEvent" Value="BT_RELEASED_UNLATCHED"/>
+		</FB>
+		<FB Name="F_BOOL_TO_DWORD" Type="iec61131::conversion::F_BOOL_TO_DWORD" x="4700" y="-900">
+		</FB>
+		<FB Name="F_BOOL_TO_DWORD_1" Type="iec61131::conversion::F_BOOL_TO_DWORD" x="4900" y="200">
+		</FB>
+		<FB Name="F_BOOL_TO_DWORD_2" Type="iec61131::conversion::F_BOOL_TO_DWORD" x="4800" y="1300">
+		</FB>
+		<FB Name="F_BOOL_TO_DWORD_3" Type="iec61131::conversion::F_BOOL_TO_DWORD" x="4800" y="2400">
+		</FB>
+		<FB Name="F_BOOL_TO_DWORD_4" Type="iec61131::conversion::F_BOOL_TO_DWORD" x="4800" y="3600">
+		</FB>
+		<FB Name="E_T_FF" Type="iec61499::events::E_T_FF" x="7400" y="5600">
+		</FB>
+		<FB Name="Q_BackgroundColour_7" Type="isobus::UT::Q::Q_BackgroundColour" x="9500" y="6700">
+			<Parameter Name="u16ObjId" Value="Button_Luftventil"/>
+		</FB>
+		<FB Name="F_SEL_7" Type="iec61131::selection::F_SEL" x="8200" y="6800">
+			<Parameter Name="IN0" Value="COLOR_RED"/>
+			<Parameter Name="IN1" Value="COLOR_GREEN"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="F_AND_1.CNF" Destination="Luftventil.REQ" dx1="526.09">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND_2.CNF" Destination="Summer.REQ" dx1="539.13">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND_3.CNF" Destination="Wasserpumpe.REQ" dx1="573.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND_4.CNF" Destination="Wasserventil.REQ" dx1="656.52">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.EO" Destination="F_AND.REQ" dx1="5373.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.EO" Destination="F_AND_1.REQ" dx1="5373.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.EO" Destination="F_AND_2.REQ" dx1="5378.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.EO" Destination="F_AND_4.REQ" dx1="5286.96">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.EO" Destination="F_AND_3.REQ" dx1="5373.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F2.IND" Destination="E_SR.R" dx1="630.43">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND.CNF" Destination="Granulatschieber.REQ" dx1="486.96">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F2.IND" Destination="Start_Baumsetzer.STOP" dx1="886.96">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Start" Destination="E_SR.S" dx1="52.17" dx2="52.17" dy="-47.83">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Summer.CNF" Destination="E_SWITCH.EI" dx1="165.22">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Pulse_Wasser" Destination="OR_5.REQ" dx1="2434.78">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Pulse_Wasserpumpe" Destination="OR_4.REQ" dx1="2434.78">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Pulse_Summer" Destination="OR_3.REQ" dx1="2434.78">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Pulse_Luft" Destination="OR_2.REQ" dx1="2434.78">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Pulse_Granulat" Destination="OR_1.REQ" dx1="2434.78">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Granulatschieber.IND" Destination="E_PULSE.REQ" dx1="643.48">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE.CNF" Destination="OR_1.REQ" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Luftventil.IND" Destination="E_PULSE_1.REQ" dx1="630.43">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Summer.IND" Destination="E_PULSE_2.REQ" dx1="626.09">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Wasserpumpe.IND" Destination="E_PULSE_3.REQ" dx1="621.74">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Wasserventil.IND" Destination="E_PULSE_4.REQ" dx1="608.7">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_1.CNF" Destination="OR_2.REQ" dx1="1786.96">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_2.CNF" Destination="OR_3.REQ" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_3.CNF" Destination="OR_4.REQ" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_4.CNF" Destination="OR_5.REQ" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Granulatschieber.IND" Destination="E_SR.S" dx1="52.17" dx2="52.17" dy="-2673.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Luftventil.IND" Destination="E_SR.S" dx1="52.17" dx2="52.17" dy="-3065.22">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Summer.IND" Destination="E_SR.S" dx1="52.17" dx2="52.17" dy="-3456.52">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Wasserpumpe.IND" Destination="E_SR.S" dx1="52.17" dx2="52.17" dy="-3847.83">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Wasserventil.IND" Destination="E_SR.S" dx1="52.17" dx2="52.17" dy="-4243.48">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SWITCH.EO1" Destination="E_PERMIT.EI" dx1="326.09">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PERMIT.EO" Destination="Baumzaehler.CU" dx1="543.48">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL.CNF" Destination="Q_BackgroundColour.REQ" dx1="1033.33"/>
+			<Connection Source="F_AND_1.CNF" Destination="F_SEL.REQ" dx1="1533.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_1.CNF" Destination="Q_BackgroundColour_1.REQ" dx1="1033.33"/>
+			<Connection Source="F_AND.CNF" Destination="F_SEL_1.REQ" dx1="1480">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_2.CNF" Destination="Q_BackgroundColour_2.REQ" dx1="1046.67"/>
+			<Connection Source="F_AND_2.CNF" Destination="F_SEL_2.REQ" dx1="1826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_3.CNF" Destination="Q_BackgroundColour_3.REQ" dx1="1033.33"/>
+			<Connection Source="F_AND_3.CNF" Destination="F_SEL_3.REQ" dx1="1686.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_4.CNF" Destination="Q_BackgroundColour_4.REQ" dx1="1040"/>
+			<Connection Source="F_AND_4.CNF" Destination="F_SEL_4.REQ" dx1="1686.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F2.IND" Destination="E_PULSE.R" dx1="2420">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F2.IND" Destination="E_PULSE_1.R" dx1="2426.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F2.IND" Destination="E_PULSE_2.R" dx1="2426.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F2.IND" Destination="E_PULSE_3.R" dx1="2420">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F2.IND" Destination="E_PULSE_4.R" dx1="2426.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="SoftKey_F6.IND" Destination="E_T_FF.CLK" dx1="126.67"/>
+			<Connection Source="F_SEL_5.CNF" Destination="Q_BackgroundColour_5.REQ" dx1="693.33"/>
+			<Connection Source="E_SR.EO" Destination="F_SEL_5.REQ" dx1="80" dx2="80" dy="1193.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.EO" Destination="F_NOT.REQ" dx1="80" dx2="80" dy="1193.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_6.CNF" Destination="Q_BackgroundColour_6.REQ" dx1="686.67"/>
+			<Connection Source="F_NOT.CNF" Destination="F_SEL_6.REQ"/>
+			<Connection Source="F_BOOL_TO_DWORD.CNF" Destination="F_AND.REQ" dx1="926.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_1.CNF" Destination="F_AND_1.REQ" dx1="1340">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_2.CNF" Destination="F_AND_2.REQ" dx1="826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_3.CNF" Destination="F_AND_3.REQ" dx1="826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_4.CNF" Destination="F_AND_4.REQ" dx1="826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Button_Reset_Baeume_gepflanzt.IND" Destination="Baumzaehler.RESET" dx1="200"/>
+			<Connection Source="OR_1.CNF" Destination="F_BOOL_TO_DWORD.REQ" dx1="453.33"/>
+			<Connection Source="OR_2.CNF" Destination="F_BOOL_TO_DWORD_1.REQ" dx1="553.33"/>
+			<Connection Source="OR_3.CNF" Destination="F_BOOL_TO_DWORD_2.REQ" dx1="506.67"/>
+			<Connection Source="OR_4.CNF" Destination="F_BOOL_TO_DWORD_3.REQ" dx1="553.33"/>
+			<Connection Source="OR_5.CNF" Destination="F_BOOL_TO_DWORD_4.REQ" dx1="506.67"/>
+			<Connection Source="E_T_FF.EO" Destination="Scheinwerfer.REQ"/>
+			<Connection Source="E_T_FF.EO" Destination="F_SEL_7.REQ" dx1="153.33"/>
+			<Connection Source="F_SEL_7.CNF" Destination="Q_BackgroundColour_7.REQ"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="F_AND_1.OUT" Destination="Luftventil.OUT" dx1="482.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND_2.OUT" Destination="Summer.OUT" dx1="539.13">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND_3.OUT" Destination="Wasserpumpe.OUT" dx1="573.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND_4.OUT" Destination="Wasserventil.OUT" dx1="656.52">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.Q" Destination="F_AND.IN2" dx1="5373.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.Q" Destination="F_AND_1.IN2" dx1="5373.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.Q" Destination="F_AND_2.IN2" dx1="5378.26">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.Q" Destination="F_AND_3.IN2" dx1="5373.91">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.Q" Destination="F_AND_4.IN2" dx1="5286.96">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND.OUT" Destination="Granulatschieber.OUT" dx1="486.96">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_AND_2.OUT" Destination="E_SWITCH.G" dx1="960.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Wasserventil" Destination="OR_5.IN1" dx1="2660.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Wasserpumpe" Destination="OR_4.IN1" dx1="2660.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Summer" Destination="OR_3.IN1" dx1="2660.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Luftventil" Destination="OR_2.IN1" dx1="2665.22">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Granulatschieber" Destination="OR_1.IN1" dx1="2660.87">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE.Q" Destination="OR_1.IN2" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_1.Q" Destination="OR_2.IN2" dx1="1786.96">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_2.Q" Destination="OR_3.IN2" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_3.Q" Destination="OR_4.IN2" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_PULSE_4.Q" Destination="OR_5.IN2" dx1="1782.61">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="Start_Baumsetzer.Summer" Destination="E_PERMIT.PERMIT" dx1="5956.52">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL.OUT" Destination="Q_BackgroundColour.u8Colour" dx1="540"/>
+			<Connection Source="F_AND_1.OUT" Destination="F_SEL.G" dx1="1533.33">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_1.OUT" Destination="Q_BackgroundColour_1.u8Colour" dx1="540"/>
+			<Connection Source="F_AND.OUT" Destination="F_SEL_1.G">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_2.OUT" Destination="Q_BackgroundColour_2.u8Colour" dx1="540"/>
+			<Connection Source="F_AND_2.OUT" Destination="F_SEL_2.G" dx1="1826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_3.OUT" Destination="Q_BackgroundColour_3.u8Colour" dx1="540"/>
+			<Connection Source="F_AND_3.OUT" Destination="F_SEL_3.G" dx1="1686.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_4.OUT" Destination="Q_BackgroundColour_4.u8Colour" dx1="540"/>
+			<Connection Source="F_AND_4.OUT" Destination="F_SEL_4.G" dx1="1686.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_5.OUT" Destination="Q_BackgroundColour_5.u8Colour" dx1="326.67"/>
+			<Connection Source="E_SR.Q" Destination="F_SEL_5.G" dx1="80" dx2="80" dy="1140">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="E_SR.Q" Destination="F_NOT.IN" dx1="80" dx2="80" dy="1140">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_SEL_6.OUT" Destination="Q_BackgroundColour_6.u8Colour" dx1="506.67"/>
+			<Connection Source="F_NOT.OUT" Destination="F_SEL_6.G"/>
+			<Connection Source="F_BOOL_TO_DWORD.OUT" Destination="F_AND.IN1" dx1="926.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_1.OUT" Destination="F_AND_1.IN1" dx1="1340">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_2.OUT" Destination="F_AND_2.IN1" dx1="826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_3.OUT" Destination="F_AND_3.IN1" dx1="826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="F_BOOL_TO_DWORD_4.OUT" Destination="F_AND_4.IN1" dx1="826.67">
+				<Attribute Name="Visible" Value="false"/>
+			</Connection>
+			<Connection Source="OR_1.OUT" Destination="F_BOOL_TO_DWORD.IN" dx1="453.33"/>
+			<Connection Source="OR_2.OUT" Destination="F_BOOL_TO_DWORD_1.IN" dx1="553.33"/>
+			<Connection Source="OR_3.OUT" Destination="F_BOOL_TO_DWORD_2.IN" dx1="506.67"/>
+			<Connection Source="OR_4.OUT" Destination="F_BOOL_TO_DWORD_3.IN" dx1="553.33"/>
+			<Connection Source="OR_5.OUT" Destination="F_BOOL_TO_DWORD_4.IN" dx1="506.67"/>
+			<Connection Source="E_T_FF.Q" Destination="Scheinwerfer.OUT" dx1="613.33"/>
+			<Connection Source="E_T_FF.Q" Destination="F_SEL_7.G" dx1="153.33"/>
+			<Connection Source="F_SEL_7.OUT" Destination="Q_BackgroundColour_7.u8Colour" dx1="333.33"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

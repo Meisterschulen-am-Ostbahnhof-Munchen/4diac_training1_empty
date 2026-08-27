@@ -107,4 +107,5 @@ Desired output range: 0.0..500.0</p>
 
 <p><strong>Output:</strong> Y = (X + 0) * 500 = X * 500 = 0..500 ✓</p>
 ]]></Attribute>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </FBType>

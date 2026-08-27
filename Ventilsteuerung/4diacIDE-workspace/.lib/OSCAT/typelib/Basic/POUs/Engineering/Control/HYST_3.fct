@@ -80,4 +80,5 @@ END_FUNCTION
  * hm	5. jan 2008	rev 1.2 further performance iprovements *)
 ]]></ST>
 	</FunctionBody>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </Function>

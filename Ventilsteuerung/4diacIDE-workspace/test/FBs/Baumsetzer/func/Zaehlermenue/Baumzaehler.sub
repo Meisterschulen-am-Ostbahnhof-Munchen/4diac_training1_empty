@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="Baumzaehler" Comment="Subapplication Type">
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Elias" Date="2024-10-09">
+	</VersionInfo>
+	<CompilerInfo packageName="FBs::Baumsetzer::func::Zaehlermenue">
+		<Import declaration="NVS_Keys::Key_Baumzaehler_Store"/>
+		<Import declaration="test::FBs::Baumsetzer::Constants::DefaultPool"/>
+	</CompilerInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="VT_Active" Type="Event">
+			</SubAppEvent>
+			<SubAppEvent Name="CU" Type="Event" Comment="Counts up">
+			</SubAppEvent>
+			<SubAppEvent Name="CD" Type="Event">
+			</SubAppEvent>
+			<SubAppEvent Name="RESET" Type="Event" Comment="Resets Value">
+			</SubAppEvent>
+		</SubAppEventInputs>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<SubApp Name="Baumzaehler" Type="Zaehler" x="-4600" y="-900">
+			<Parameter Name="KEY" Value="Key_Baumzaehler_Store"/>
+			<Parameter Name="u16ObjId" Value="DefaultPool::NumberVariable_Baumzaehler"/>
+		</SubApp>
+		<EventConnections>
+			<Connection Source="RESET" Destination="Baumzaehler.R" dx1="2526.67"/>
+			<Connection Source="CU" Destination="Baumzaehler.CU" dx1="2526.67"/>
+			<Connection Source="CD" Destination="Baumzaehler.CD" dx1="2526.67"/>
+			<Connection Source="VT_Active" Destination="Baumzaehler.rVT" dx1="2508.7"/>
+		</EventConnections>
+	</SubAppNetwork>
+</SubAppType>

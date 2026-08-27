@@ -28,7 +28,7 @@
 		<VarDeclaration Name="all_clients" Type="SINT" InitialValue="20"/>
 		<VarDeclaration Name="all_server" Type="SINT" InitialValue="21"/>
 		<VarDeclaration Name="undefined" Type="SINT" InitialValue="-1"/>
-</GlobalConstants>
+	</GlobalConstants>
 	<OriginalSource><![CDATA[PACKAGE isobus::pgn;
 
 GLOBALCONSTANTS USERFUNC_e

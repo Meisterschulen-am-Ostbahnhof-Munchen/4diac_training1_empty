@@ -63,4 +63,5 @@ END_FUNCTION
  * *
  * hm	10. mar. 2009	rev 1.5 real constants updated to new systax using dot *) ]]></ST>
 	</FunctionBody>
+	<Attribute Name="eclipse4diac::core::TypeHash" Value="''"/>
 </Function>
