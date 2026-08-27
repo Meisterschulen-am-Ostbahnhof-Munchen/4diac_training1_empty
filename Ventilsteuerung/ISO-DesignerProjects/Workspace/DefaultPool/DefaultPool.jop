@@ -6715,7 +6715,7 @@ AHIA/ABjAGsAZQBuACEAAAA=]]>
 			<PropertySheet Name="Image">
 				<Property Name="Path">
 					<Value>
-						<![CDATA[..\..\..\..\Bilder\Maschine_small.png]]>
+						<![CDATA[.\Bilder\Maschine_small.png]]>
 					</Value>
 				</Property>
 				<Property Name="ResourceID">
@@ -6780,7 +6780,7 @@ AHIA/ABjAGsAZQBuACEAAAA=]]>
 			<PropertySheet Name="Image">
 				<Property Name="Path">
 					<Value>
-						<![CDATA[..\..\..\..\Bilder\logo_grafinger_small.png]]>
+						<![CDATA[.\Bilder\logo_grafinger_small.png]]>
 					</Value>
 				</Property>
 				<Property Name="ResourceID">
@@ -6845,7 +6845,7 @@ AHIA/ABjAGsAZQBuACEAAAA=]]>
 			<PropertySheet Name="Image">
 				<Property Name="Path">
 					<Value>
-						<![CDATA[..\..\..\..\Bilder\headlight_small.jpg]]>
+						<![CDATA[.\Bilder\headlight_small.jpg]]>
 					</Value>
 				</Property>
 				<Property Name="ResourceID">
